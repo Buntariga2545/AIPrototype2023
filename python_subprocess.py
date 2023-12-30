@@ -24,6 +24,7 @@ if __name__ == "__main__":
                                       stdout=subprocess.PIPE,
                                       stderr=subprocess.PIPE)
     out, err = process_output.communicate()
+    print(sum.args)
     print(out.decode('utf-8'))
     print(len(out.decode('utf-8')))
                                       
