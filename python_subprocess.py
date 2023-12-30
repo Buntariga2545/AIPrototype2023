@@ -8,19 +8,19 @@ if __name__ == "__main__":
 
     #python commands
     print(f"first run num=100 XX=90")
-    subprocess.run(["python", "firstpy.py", "--num", "100", "--XX", "90"])
+    p1 = subprocess.run(["python", "firstpy.py", "--num", "100", "--XX", "90"])
     print(f"------------------------------------------------------")
     print(f"second run num=-10 XX=-90")
-    subprocess.run(["python", "firstpy.py", "--num", "-10", "--XX", "-90"])
+    p2 = subprocess.run(["python", "firstpy.py", "--num", "-10", "--XX", "-90"])
     print(f"------------------------------------------------------")
     print(f"third run num=0")
-    subprocess.run(["python", "firstpy.py", "--num", "0"])
+    p3 = subprocess.run(["python", "firstpy.py", "--num", "0"])
     print(f"------------------------------------------------------")
 
 
           
     #use output from other program
-    process_output = subprocess.Popen(["python", "firstpy.py", "sum"],
+    process_output = subprocess.Popen(["python", "firstpy.py", "--num", "p1+p2+p3"],
                                       stdout=subprocess.PIPE,
                                       stderr=subprocess.PIPE)
     out, err = process_output.communicate()
