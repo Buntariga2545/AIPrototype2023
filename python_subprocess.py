@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
           
     #use output from other program
-    process_output = subprocess.Popen(["python", "firstpy.py", "--num", "810"],
+    process_output = subprocess.Popen(["python", "firstpy.py", "--num", "sum"],
                                       stdout=subprocess.PIPE,
                                       stderr=subprocess.PIPE)
     out, err = process_output.communicate()
