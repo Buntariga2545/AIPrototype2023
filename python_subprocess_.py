@@ -13,13 +13,13 @@ def printHello():
 if __name__ == "__main__":
 
     print(f"first run num=100 XX=90")
-    p1 = subprocess.run(["python", "firstpy.py", "--num", "100", "--XX", "90"], capture_output=True)
+    p1 = subprocess.run(["python", "firstpy.py", "--num", "100", "--XX", "90"])
     print(f"------------------------------------------------------\n")
     print(f"second run num=-10 XX=-90")
-    p2 = subprocess.run(["python", "firstpy.py", "--num", "-10", "--XX", "-90"], capture_output=True)
+    p2 = subprocess.run(["python", "firstpy.py", "--num", "-10", "--XX", "-90"])
     print(f"------------------------------------------------------\n")
     print(f"third run num=0")
-    p3 = subprocess.run(["python", "firstpy.py", "--num", "0"], capture_output=True)
+    p3 = subprocess.run(["python", "firstpy.py", "--num", "0"])
     print(f"------------------------------------------------------\n")
 
     result1 = extract_numeric(p1.stdout.decode('utf-8'))
@@ -30,7 +30,6 @@ if __name__ == "__main__":
     print(f"Result 2: {result2}")
     print(f"Result 3: {result3}")
 
-    # Sum the results
     result_sum = sum([result1, result2, result3])
     print(f"Summation of {result1} + ({result2}) + {result3} is: {result_sum}")
     printHello()
