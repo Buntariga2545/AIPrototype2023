@@ -13,13 +13,13 @@ def printHello():
 if __name__ == "__main__":
 
     print(f"first run num=100 XX=90")
-    p1 = subprocess.run(["python", "firstpy.py", "--num", "100", "--XX", "90"])
+    p1 = subprocess.run(["python", "firstpy.py", "--num", "100", "--XX", "90"], capture_output=True)
     print(f"------------------------------------------------------\n")
     print(f"second run num=-10 XX=-90")
-    p2 = subprocess.run(["python", "firstpy.py", "--num", "-10", "--XX", "-90"])
+    p2 = subprocess.run(["python", "firstpy.py", "--num", "-10", "--XX", "-90"], capture_output=True)
     print(f"------------------------------------------------------\n")
     print(f"third run num=0")
-    p3 = subprocess.run(["python", "firstpy.py", "--num", "0"])
+    p3 = subprocess.run(["python", "firstpy.py", "--num", "0"], capture_output=True)
     print(f"------------------------------------------------------\n")
 
     result1 = extract_numeric(p1.stdout.decode('utf-8'))
