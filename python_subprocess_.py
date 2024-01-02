@@ -4,7 +4,7 @@ import subprocess
 
 def extract_numeric(word):
     for i in word.splitlines():
-       if i.strip().isdigit() or (i.strip().lstrip('-').isdigit() and '-' in i):
+       if i.strip().isdigit() or (i.strip().lstrip('-').isdigit()):
             return int(i.strip())
     return 0
 
@@ -35,9 +35,9 @@ if __name__ == "__main__":
     print(f"------------------------------------------------------\n")
 
 
-    output1 = extract_numeric(p1)
-    output2 = extract_numeric(p2)
-    output3 = extract_numeric(p3)
+    output1 = extract_numeric(p1.stdout.decode('utf-8'))
+    output2 = extract_numeric(p2.stdout.decode('utf-8'))
+    output3 = extract_numeric(p3.stdout.decode('utf-8'))
 
 
     total_sum = sum([output1, output2, output3])
