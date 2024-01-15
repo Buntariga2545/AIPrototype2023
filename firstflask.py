@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-@app.roote("/")
+@app.route("/")
 def helloworld():
     return "Hello, World!"
 
