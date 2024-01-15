@@ -10,7 +10,11 @@ def helloworld():
 
 @app.route("/name")
 def hellodew():
-    return "Hello, Dew!"  
+    return "Hello, Dew!"
+
+@app.route("/home2")
+def home2():
+    return render_template("home.html",name='dew')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',debug=True,port=5001)#host='0.0.0.0',port=500
