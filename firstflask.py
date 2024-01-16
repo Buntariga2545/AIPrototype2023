@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, make_response
 
 import json
+import sys
 
 app = Flask(__name__)
 
@@ -18,12 +19,12 @@ def home2():
 
 @app.route("/home", methods=['POST','GET'])
 def homefn():
-    print('We are in home')
+    print('We are in home', file=sys.stdout)
     
     namein = request.form.get('fname')
     lastnamein = request.form.get('lname')
-    print(namein)
-    print(lastnamein)
+    print(namein, file=sys.stdout)
+    print(lastnamein, file=sys.stdout)
     return render_template("home.html",name=namein)
 
 if __name__ == "__main__":
