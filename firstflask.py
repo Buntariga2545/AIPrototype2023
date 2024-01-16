@@ -16,7 +16,7 @@ def hellodew():
 def home2():
     return render_template("home.html",name='dew')
 
-@app.route("/home", methods=['POST'])
+@app.route("/home", methods=['POST','GET'])
 def homefn():
     print('We are in home')
     
