@@ -1,27 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web App</title>
+  <style>
+    body {
+      background-image: url("https://i.pinimg.com/originals/c7/a2/54/c7a254857cb8a26edd3c593277168106.jpg");
+      background-repeat: repeat-x;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 80vh;
+    }
+  </style>
+</head>
+
+<body>
 <div ng-app="app">
   <div ng-controller="UploadController as vm">
     <div class="container">
       <div class="page-header">
-        <h1>File upload</h1>
-        <h6>Choose the file to upload.</h6>
+        <h1>File Upload</h1>
+        <h3>Choose the file to upload.</h3>
       </div>
 
+      <form action="{{ url_for('homefn')}}" method="post"></form>
       <form ng-model="vm.file" my-file-upload>
         <div class="form-group">
-          <label for="fileName">Select a file</label>
+          <label for="fileName">Select a file<br></label>
           <div class="input-group">
-            <input type="text" id="fileName" class="form-control" readonly ng-model="fileName" ng-click="browse()">
+            <!-- <input type="file" id="fileName" class="form-control" readonly ng-model="fileName" ng-click="browse()">
             <span class="input-group-btn">
-              <button type="button" class="btn btn-default" ng-click="browse()">Browse</button>
-            </span>
+              <button type="button" class="btn btn-default" ng-click="browse()"class="text-center">Browse</button>
+            </span> -->
+          <input id="hidden-input" type="file"  name="images" accept="image/*" multiple class="hidden" />
+          <button id="button" type="button" class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">
+            Upload a file
+          </button>
           </div>
         </div>
 
         <div>
           <button type="reset" class="btn btn-default" ng-click="reset()">Reset</button>
-          <button type="button" class="btn btn-primary" ng-click="vm.upload()" ng-disabled="!vm.file">Upload</button>
+          <button type="button" class="btn btn-primary" ng-click="vm.upload()" ng-disabled="!vm.file">Upload<br></button>
         </div>
       </form>
     </div>
   </div>
 </div>
+</body>
+</html>
+
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<main class="main_full">
+	<div class="container">
+		<div class="panel">
+			<div class="button_outer">
+				<div class="btn_upload">
+					<input type="file" id="upload_file" name="">
+					Upload Image
+				</div>
+				<div class="processing_bar"></div>
+				<div class="success_box"></div>
+			</div>
+		</div>
+		<div class="error_msg"></div>
+		<div class="uploaded_file_view" id="uploaded_view">
+			<span class="file_remove">X</span>
+		</div>
+	</div>
+</main>-->
