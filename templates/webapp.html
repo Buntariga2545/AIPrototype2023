@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web App</title>
+  <h1 class="col-md-12 text-center"style="font-size: 33px;">
+    <font style="color:#124c7c"face="Palatino Linotype">
+       <strong><CENTER>
+        A Study of Thermal Comfort in Buildings Using Data Mining:
+        <br>
+        A Case Study in Krung Thep Aphiwat Central Terminal Station</strong></CENTER></font>
+    </h1>
+  <style>
+    body {
+      background-image: url("https://i.pinimg.com/originals/0f/e7/09/0fe709a0206ce903abeb51ea74339b72.png");
+      background-repeat: repeat-x;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 80vh;
+    }
+  </style>
+</head>
+
+<body>
+  <div ng-app="app">
+    <div ng-controller="UploadController as vm">
+      <div class="container">
+        <div class="page-header">
+          <h2><font style="color:#602194"><font style="font-size: 28px;"><strong>File Upload</strong></font></font></h2>
+          <h3><font style="color:#602194"><font style="font-size: 24px;"><strong>Choose the file to upload.</strong></font></font></h3>
+        </div>
+       
+        <!--<form action="{{ url_for('homefn, upload_file')}}" method="post">-->
+        <!-- <form ng-model="vm.file" my-file-upload> -->
+          <div class="form-group">
+            <!-- <label for="fileName"><strong>Select a file</strong><br></label> -->
+            <div class="input-group">
+              <!-- <input type="file" id="fileName" class="form-control" readonly ng-model="fileName" ng-click="browse()">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="browse()"class="text-center">Browse</button>
+              </span> -->
+              
+            <label for="myfile"><font style="color:#602194"><font style="font-size: 20px;"><strong>Select a file:   </strong></font></font></label>
+            <strong><input type="file" id="myfile" 
+            name="myfile" multiple="multiple"></strong>
+            <br></br>
+
+            <!-- <input id="hidden-input" type="file" name="images" multiple class="hidden" />
+            <button id="button" type="button" class="mt-2 rounded-sm px-3 py-1 bg-gray-200 hover:bg-gray-300 focus:shadow-outline focus:outline-none">
+              <strong>Upload a file</strong>
+            </button> -->
+
+            </div>
+          </div>
+
+        <div>
+          <button type="reset" class="btn btn-default" ng-click="reset()"> Reset  </button>
+          <button type="button" class="btn btn-primary" ng-click="vm.upload()" ng-disabled="!vm.file">  Upload <br></button>
+        </div>
+    </div>
+  </div>
+</div>
+</form>
+</body>
+</html>
+
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<main class="main_full">
+	<div class="container">
+		<div class="panel">
+			<div class="button_outer">
+				<div class="btn_upload">
+					<input type="file" id="upload_file" name="">
+					Upload Image
+				</div>
+				<div class="processing_bar"></div>
+				<div class="success_box"></div>
+			</div>
+		</div>
+		<div class="error_msg"></div>
+		<div class="uploaded_file_view" id="uploaded_view">
+			<span class="file_remove">X</span>
+		</div>
+	</div>
+</main>-->
