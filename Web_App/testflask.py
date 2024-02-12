@@ -16,7 +16,7 @@ def hellodew():
 
 @app.route("/home2")
 def home2():
-    return render_template("home.html",name='dew')
+    return render_template("webapp.html",name='dew')
 
 @app.route("/home", methods=['POST','GET'])
 def homefn():
@@ -34,7 +34,7 @@ def homefn():
         print(lastnamein, file=sys.stdout)
         return render_template("webapp.html",name=namein)
 
-@app.route('/upload2', methods=['GET', 'POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         file = request.files['file']
