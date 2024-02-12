@@ -1,11 +1,23 @@
-from flask import Flask, redirect, request, render_template, make_response
+from flask import Flask, flash,request, redirect, render_template, make_response
 
 import json
 import sys
 
 app = Flask(__name__)
 
-#ap1
+##api
+@app.route("/")
+def helloworld():
+    return "Hello, World!"
+
+@app.route("/name")
+def hellodew():
+    return "Hello, Dew!"
+
+@app.route("/home2")
+def home2():
+    return render_template("home.html",name='dew')
+
 @app.route("/home", methods=['POST','GET'])
 def homefn():
     if request.method == "GET":
@@ -38,7 +50,8 @@ def upload_file():
       <input type=file name=file>
       <input type=submit value=Upload>
     </form>
-    '''
+    ''' 
+
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',debug=True,port=5000)#host='0.0.0.0',port=5000
+    app.run(host='0.0.0.0',debug=True,port=5001)#host='0.0.0.0',port=5001
