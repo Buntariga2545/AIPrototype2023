@@ -21,10 +21,10 @@ def home2():
 @app.route("/home", methods=['POST','GET'])
 def homefn():
     if request.method == "GET":
-        print('We are in home(GET)', file=sys.stdout)
-        namein = request.args.get('fname')
-        print(namein, file=sys.stdout)
-        return render_template("webapp.html",name=namein)
+       print('we aer in home(GET)', file=sys.stdout)
+       namein = request.args.get('fname')
+       print(namein, file=sys.stdout)
+       return render_template("webapp.html", name=namein)
 
     elif request.method == "POST":
         print('We are in home(POST)', file=sys.stdout)
