@@ -26,31 +26,10 @@ def home2():
 def main():
     return render_template("webapp.html")
 
-@app.route('/predict', methods = ['POST'])
-def getPredict():
-
-
-
 @app.route("/home", methods=['POST','GET'])
 def homefn():
-    return render_template("webapp1.html")
+       return render_template("Webapp1.html")
 
-#@app.route("/home", methods=['POST','GET'])
-#def homefn():
-#    if request.method == "GET":
-#       print('we are in home(GET)', file=sys.stdout)
-#       namein = request.args.get('fname')
-#       print(namein, file=sys.stdout)
-#       return render_template("webapp.html", name=namein)
-#
-#    elif request.method == "POST":
-#        print('We are in home(POST)', file=sys.stdout)
-#        namein = request.form.get('fname')
-#        lastnamein = request.form.get('lname')
-#        print(namein, file=sys.stdout)
-#        print(lastnamein, file=sys.stdout)
-#        return render_template("webapp.html",name=namein)
-    
 @app.route("/form", methods=['POST','GET'])
 def form_info():
     if request.method == "GET":
@@ -95,3 +74,21 @@ def upload_file():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0',debug=True,port=5001)#host='0.0.0.0',port=5001
+
+
+
+#@app.route("/home", methods=['POST','GET'])
+#def homefn():
+#    if request.method == "GET":
+#       print('we are in home(GET)', file=sys.stdout)
+#       namein = request.args.get('fname')
+#       print(namein, file=sys.stdout)
+#       return render_template("webapp.html", name=namein)
+#
+#    elif request.method == "POST":
+#        print('We are in home(POST)', file=sys.stdout)
+#        namein = request.form.get('fname')
+#        lastnamein = request.form.get('lname')
+#        print(namein, file=sys.stdout)
+#        print(lastnamein, file=sys.stdout)
+#        return render_template("webapp.html",name=namein)
