@@ -5,17 +5,20 @@
   <meta http-equiv="x-ua-compatible" content="TE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">
+  <!--<link rel="stylesheet" href="style.css">-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
   <title>Web App</title>
+  <!--<title>Thermal Comfort</title>-->
 </head>
 <body>
   <div class="container">
     <header><h2>Information</h2></header>
 
-    <form action="#">
+    <!--<form action="#">-->
+    <form action="{{url_for('form_info')}}" method="GET"">
       <div class="form first">
         <div class="details personal">
           <span class="title"><font style="font-size: 20px;"><strong>Personal Factors</strong></font></span>
@@ -93,7 +96,8 @@
             <button type="reset" class="resetBtn" ng-click="reset()">Reset</button>
 
             <button class="nextBtn">
-              <span class="btnText">Submit</span>
+              <!--<span class="btnText">Submit</span>-->
+              <a href="{{ url_for('res') }}" class="btnText">Submit</a>
               <i class="uil uil-navigator"></i>
           </button>
           </div>
