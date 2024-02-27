@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -89,12 +89,11 @@ banner {
     background-color: #ffa037;
     padding: 15px 50px;
     float: left;
-  
 }
 .app-pic img{
     width: 700px; 
     position: absolute;
-    top: 50px; 
-    right: 40px;    
-    padding: 50px;
+    top: 50px;
+    right: 40px;
+    padding: 5opx;
 }
