@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    padding: 10px;
+    /*background-color: #9290C3*/
+}
+.logo a {
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 80px;
+    padding: 0 25px;
+}
+.menu {
+    display: flex;
+    list-style: none;
+}
+.menu li a {
+    display: inline-block;
+    padding: 0 25px;
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 80px;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+banner {
+    width: 80%;
+    height: 70%;
+    position: absolute;
+    top: 25%;
+    left: 150px;
+    color: #333;
+}
+.app-text {
+    width: 50%;
+    float: left;
+    padding-left: 50px;
+}
+.app-text h3 {
+    margin-top: 100px;
+    font-size: 17px;
+    color: #000;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.app-text h1 {
+    font-size: 51px;
+    position: relative;
+    color: #000;
+    margin-top:30px;
+    font-weight: 700;
+    line-height: 1;
+}
+.app-text p {
+    font-size: 19px;
+    margin: 30px 30px 30px 0;
+    letter-spacing: 1px;
+    padding-right: 250px;
+    color: #000 ;
+}
+.btn-group {
+    display: flex;
+    width: 100%;
+    position: relative;
+} 
+.pred-btn {
+    cursor: pointer;
+    display: block;
+    color: #000;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 32px;
+    background-color: #ffa037;
+    padding: 15px 50px;
+    float: left;
+  
+}
+.app-pic img{
+    width: 700px; 
+    position: absolute;
+    top: 50px; 
+    right: 40px;    
+    padding: 50px;
+}
