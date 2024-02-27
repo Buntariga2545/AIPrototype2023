@@ -11,4 +11,4 @@
 
 ## [WEB PAGE💻](https://buntariga2545.github.io/test_webpage/)
 
-## [GitHub Project📂📚]
+## [GitHub Project📂📚](https://github.com/Buntariga2545/Project)
