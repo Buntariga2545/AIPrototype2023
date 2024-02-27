@@ -6,29 +6,25 @@ import json
 import sys
 
 app = Flask(__name__)
-##model = pickle.load(open('model.pk', 'rb'))
-
 
 ##api
+@app.route('/request',methods=['POST'])
+def web_service_API():
+
+    payload = request.data.decode("utf-8")
+    imessage = json.loads(payload)
+
+    print(imessage)
+    json_data = json.dumps({'y':'received'})
+    return json_data
+
 @app.route("/")
 def helloworld():
-    return "Hello, World!"
-
-@app.route("/name")
-def hellodew():
-    return "Hello, Dew!"
-
-@app.route("/home2")
-def home2():
-    return render_template("webapp.html",name='dew')
-
-@app.route('/')
-def main():
-    return render_template("webapp.html")
+    return "<h1> Welcome to My Web Application.</h1>"
 
 @app.route("/home", methods=['POST','GET'])
 def homefn():
-       return render_template("Webapp1.html")
+       return render_template("webapp1.html")
 
 @app.route("/form", methods=['POST','GET'])
 def form_info():
@@ -59,7 +55,6 @@ def upload_file():
         file = request.files['file']
         file.save('file')
         return render_template("webapp.html",name='upload completed')
-    
 
     return '''
     <!doctype html>
@@ -69,11 +64,11 @@ def upload_file():
       <input type=file name=file>
       <input type=submit value=Upload>
     </form>
-    ''' 
+    '''   
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',debug=True,port=5001)#host='0.0.0.0',port=5001
+    app.run(host='0.0.0.0', debug=True,port=5001) #host='0.0.0.0'คือสามารถให้เครื่องอื่นเห็นได้
 
 
 
