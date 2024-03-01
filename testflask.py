@@ -30,10 +30,10 @@ def homefn():
 def form_info():
     if request.method == "GET":
        print('เจอละ(age)', file=sys.stdout)
-       Agein = request.args.get('ticketNum')
+       Agein = request.form.get('age')
        print(Agein, file=sys.stdout)
        print('เจอละ(weight)', file=sys.stdout)
-       weightin = request.args.get('ticketNum') 
+       weightin = request.form.get('weight') 
        print(weightin, file=sys.stdout)
        return render_template("webapp.html", Age=Agein)
 
