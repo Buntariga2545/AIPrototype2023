@@ -1,6 +1,6 @@
 from crypt import methods
 from doctest import debug
-from flask import Flask, flash,request, redirect, render_template, make_response
+from flask import Flask, flash, request, redirect, render_template, make_response
 
 import json
 import sys
@@ -31,11 +31,11 @@ def form_info():
     if request.method == "GET":
        print('Results', file=sys.stdout)
 
-       Agein = request.form.get('age')
+       Agein = request.form.get('Age')
        print('Age = Agein' , file=sys.stdout)
 
        print('เจอละ(weight)', file=sys.stdout)
-       weightin = request.form.get('weight') 
+       weightin = request.form.get('Weight') 
        print(weightin, file=sys.stdout)
        return render_template("webapp.html", Age=Agein, Weight=weightin)
 
