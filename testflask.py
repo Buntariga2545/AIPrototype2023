@@ -33,9 +33,11 @@ def form_info():
 
        Agein = request.form.get('Age')
        print('Age = ', Agein, file=sys.stdout)
+       print(Agein, file=sys.stdout)
 
        weightin = request.form.get('Weight')
        print('Weight = ', weightin, file=sys.stdout)
+       print(weightin, file=sys.stdout)
        return render_template("webapp.html", Age=Agein, Weight=weightin)
 
     elif request.method == "POST":
