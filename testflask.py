@@ -29,10 +29,12 @@ def homefn():
 @app.route("/form", methods=['POST','GET'])
 def form_info():
     if request.method == "GET":
-       print('เจอละ(GET)', file=sys.stdout)
-
+       print('เจอละ(age)', file=sys.stdout)
        Agein = request.args.get('ticketNum')
        print(Agein, file=sys.stdout)
+       print('เจอละ(weight)', file=sys.stdout)
+       weightin = request.args.get('ticketNum') 
+       print(weightin, file=sys.stdout)
        return render_template("webapp.html", Age=Agein)
 
     elif request.method == "POST":
@@ -44,10 +46,18 @@ def form_info():
        return render_template("webapp.html", Age=Agein)
 
 
+
+
+
+
+
+
+
+
+
 @app.route("/res", methods=['POST','GET'])
 def res():
        return render_template("webapp2.html")
-
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
