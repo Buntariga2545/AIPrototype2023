@@ -25,14 +25,33 @@
         <label for -->
 
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title> Prediction </title>
-    </head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="TE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+  <title>Thermal Comfort</title>
+
+  </head>
+
   <body>
-  <div align = "center" >
-            <h1>Temperature is <span style="color:red;">{{ prediction[0].round(3) }}</span></h1>
+    <form action="{{url_for('predict')}}" method="POST" enctype="multipart/form-data"></form>
+      <div class="container">
+        <header><h2><center>Result</center></h2></header>
+
+        <div align = "center" >
+          <div class="btn-group">   
+
+          <h1>Output is <span style="color:red;">{{ prediction[0].round(3) }}</span></h1>
+          </div>
         </div>
+      </div>
   </body>
 </html>
           
