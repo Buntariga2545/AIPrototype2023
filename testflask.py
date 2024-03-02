@@ -41,12 +41,23 @@ def form_info():
        return render_template("webapp.html", data = [Agein, weightin])
 
     elif request.method == "GET":
-       print('เจอละ(POST)', file=sys.stdout)
-       Agein = request.form.get('ticketNum')
-       weightin = request.form.get('ticketNum')
+       print('Results', file=sys.stdout)
+
+       Agein = request.form.get('Age')
+       print('Age = ', Agein, fike=sys.stdout)
        print(Agein, file=sys.stdout)
+       
+       weightin = request.form.get('Weight')
+       print('Weight = ', weightin, file=sys.stdout)
        print(weightin, file=sys.stdout)
-       return render_template("webapp.html", Age=Agein)
+       return render_template("webapp.html", data = [Agein, weightin])
+       
+#       print('เจอละ(POST)', file=sys.stdout)
+#       Agein = request.form.get('ticketNum')
+#       weightin = request.form.get('ticketNum')
+#       print(Agein, file=sys.stdout)
+#       print(weightin, file=sys.stdout)
+#       return render_template("webapp.html", Age=Agein)
 
 
 
