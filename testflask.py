@@ -90,12 +90,10 @@ def predict():
             return render_template('webapp2.html', prediction = prediction)
         except ValueError:
             return "Please Enter valid values"
-        pass
-    pass
     
 def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     #put all inputs in array
-    test_data = pd.read_csv('Cleaned_Thermal_Data.csv')
+    test_data = pd.read_csv('test_data.csv')
     print(test_data)
     #open file
     file = open("model.pk","rb")
@@ -104,7 +102,6 @@ def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     #predict
     prediction = trained_model.predict(test_data)
     return prediction
-    pass
 
 
 @app.route('/upload', methods=['GET', 'POST'])
