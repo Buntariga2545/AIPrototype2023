@@ -2,10 +2,16 @@ from crypt import methods
 from doctest import debug
 from flask import Flask, flash, request, redirect, render_template, make_response
 
+import pandas as pd
+import joblib
+import pickle
 import json
 import sys
 
 app = Flask(__name__)
+
+#load the model
+#model = pickle.load(open('savemodel.sav', 'rb'))
 
 ##api
 @app.route('/request',methods=['POST'])
@@ -61,17 +67,45 @@ def form_info():
 
 
 
-
-
-
-
-
-
-
-
 @app.route("/res", methods=['POST','GET'])
 def res():
        return render_template("webapp2.html")
+
+
+@app.route('/predict/', methods = ['GET', 'POST'])
+def predict():
+    if request.method == "POST":
+        #get form data
+        Age = request.form.get('Age')
+        Weight = request.form.get('Weight')
+        Height = request.form.get('Height')
+        BMI = request.form.get('BMI')
+        Temp = request.form.get('Temp')
+        RH = request.form.get('%RH')
+        V = request.form.get('V')
+        MRT = request.form.get('MRT')
+        try:
+            prediction = preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT)
+            #pass prediction to template
+            return render_template('predict.html', prediction = prediction)
+        except ValueError:
+            return "Please Enter valid values"
+        pass
+    pass
+    
+def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
+    #put all inputs in array
+    test_data = pd.read_csv('Cleaned_Thermal_Data.csv')
+    print(test_data)
+    #open file
+    file = open("model.pk","rb")
+    #load trained model
+    trained_model = joblib.load(file)
+    #predict
+    prediction = trained_model.predict(test_data)
+    return prediction
+    pass
+
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
@@ -93,14 +127,6 @@ def upload_file():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True,port=5001) #host='0.0.0.0'คือสามารถให้เครื่องอื่นเห็นได้
-
-
-
-
-
-
-
-
 
 
 
