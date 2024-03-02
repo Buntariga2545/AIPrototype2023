@@ -101,7 +101,7 @@ def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     trained_model = joblib.load(file)
     #predict
     prediction = trained_model.predict(test_data)
-    return prediction
+    return render_template('webapp2.html', prediction = prediction)
 
 
 @app.route('/upload', methods=['GET', 'POST'])
