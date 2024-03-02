@@ -1,23 +1,38 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="x-ua-compatible" content="TE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!--<link rel="stylesheet" href="style.css">-->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+  <link rel="stylesheet" href="style.css">-->
+  <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
 
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
   <title>Web App</title>
-  <!--<title>Thermal Comfort</title>-->
-</head>
+  <title>Thermal Comfort</title>-->
+
+<!--</head>
+
 <body>
   <div class="container">
     <header><h2><center>Result</center></h2></header>
     
-    <form action="#">
-        <div class="form first">
-          <div class="details personal"></div>
+    <form action="{{url_for('predict')}}" method="POST" enctype="multipart/form-data">
+      <div style="padding: 10px; padding-left: 325px;">
+        <label for -->
+
+<!doctype html>
+<html>
+  <head>
+    <title> Prediction </title>
+    </head>
+  <body>
+  <div align = "center" >
+            <h1>Temperature is <span style="color:red;">{{ prediction[0].round(3) }}</span></h1>
         </div>
+  </body>
+</html>
+          

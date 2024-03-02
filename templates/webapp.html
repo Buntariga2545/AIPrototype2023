@@ -20,7 +20,7 @@
     <header><h2>Information</h2></header>
 
     <!--<form action="#">-->
-    <form action="{{url_for('form_info')}}" method="GET"">
+    <form action="{{url_for('form_info')}}" method="POST" enctype="multipart/form-data">
       <div class="form first">
         <div class="details personal">
           <span class="title"><font style="font-size: 20px;"><strong>Personal Factors</strong></font></span>
@@ -99,7 +99,7 @@
 
             <button class="nextBtn">
               <!--<span class="btnText">Submit</span>-->
-              <a href="{{ url_for('res') }}" class="btnText">Submit</a>
+              <a href="{{ url_for('predict') }}" class="btnText">Submit</a>
               <i class="uil uil-navigator"></i>
           </button>
           </div>
