@@ -38,7 +38,7 @@ def form_info():
        print('Results', file=sys.stdout)
 
        Agein = request.form.get('Age')
-       print('Age = ', Agein, fike=sys.stdout)
+       print('Age = ', Agein, file=sys.stdout)
        print(Agein, file=sys.stdout)
        
        weightin = request.form.get('Weight')
