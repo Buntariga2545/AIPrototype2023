@@ -104,11 +104,13 @@ def predict():
         predictions = model.predict(input_variables)[0]
         print(predictions)
 
-        return flask.render_template('webapp2.html', original_input={'Gender': Genderin, 'Age': Agein, 'Weight': weightin, 
-                                                                     'Height': heightin, 'BMI': BMIin, 'Temp': Tempin, 
-                                                                     'RH': RHin, 'V': Vin, 'TMRT': TMRTin, 
-                                                                     'area': areain},
-                                     result=predictions)
+#        return flask.render_template('webapp2.html', original_input={'Gender': Genderin, 'Age': Agein, 'Weight': weightin, 
+#                                                                     'Height': heightin, 'BMI': BMIin, 'Temp': Tempin, 
+#                                                                     'RH': RHin, 'V': Vin, 'TMRT': TMRTin, 
+#                                                                     'area': areain},
+#                                     result=predictions)
+    
+        return render_template("webapp2.html", prediction=predictions)
 
 
 #        try:
@@ -136,15 +138,15 @@ def predict():
     
 #def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     #put all inputs in array
-    test_data = pd.read_csv('test_data.csv')
-    print(test_data)
+#    test_data = pd.read_csv('test_data.csv')
+#    print(test_data)
     #open file
-    file = open("model.pk","rb")
+#    file = open("model.pk","rb")
     #load trained model
-    trained_model = joblib.load(file)
+#    trained_model = joblib.load(file)
     #predict
-    prediction = trained_model.predict(test_data)
-    return render_template('webapp2.html', prediction = prediction)
+#    prediction = trained_model.predict(test_data)
+#    return render_template('webapp2.html', prediction = prediction)
 
 
 @app.route('/upload', methods=['GET', 'POST'])
