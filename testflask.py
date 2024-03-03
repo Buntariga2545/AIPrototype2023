@@ -109,9 +109,9 @@ def predict():
         prediction = model.predict(test_data)[0]
         print(prediction)
 
-        return render_template('webapp2.html', original_input={'Age': Agein, 'Weight': weightin, 'Height': heightin, 'BMI': BMIin, 
-                                'Temp': Tempin, '%RH': RHin, 'V': Vin, 'MRT': MRTin},
-                                result=prediction)
+        return render_template('webapp2.html')#, original_input={'Age': Agein, 'Weight': weightin, 'Height': heightin, 'BMI': BMIin, 
+                               # 'Temp': Tempin, '%RH': RHin, 'V': Vin, 'MRT': MRTin},
+                                #result=prediction)
     
 #        try:
 #            prediction = preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT)
