@@ -10,9 +10,8 @@ import pickle
 import json
 import sys
 
-with open(f'model/model.pk', 'rb') as f:
+with open(f'model/model.pkl', 'rb') as f:
     model = load(f)
-
 
 app = Flask(__name__)
 
@@ -55,16 +54,16 @@ def form_info():
        print('BMI = ', BMIin, file=sys.stdout)
        Tempin = request.form.get('Temp')
        print('Temp = ', Tempin, file=sys.stdout)
-       RHin = request.form.get('%RH')
-       print('%RH = ', RHin, file=sys.stdout)
+       RHin = request.form.get('RH')
+       print('RH = ', RHin, file=sys.stdout)
        Vin = request.form.get('V')
        print('V = ', Vin, file=sys.stdout)
-       MRTin = request.form.get('MRT')
-       print('MRT = ', MRTin, file=sys.stdout)
+       TMRTin = request.form.get('TMRT')
+       print('TMRT = ', TMRTin, file=sys.stdout)
        areain = request.form.get('area')
        print('area = ', areain, file=sys.stdout)
 
-       return render_template("webapp2.html", data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin, areain])
+       return render_template("webapp2.html", data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, TMRTin, areain])
 
     elif request.method == "GET":
        print('Results', file=sys.stdout)
@@ -81,30 +80,37 @@ def form_info():
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
 
-
-# prediction function
-def ValuePredictor(to_predict_list):
-    to_predict = np.array(to_predict_list).reshape(1, 10)
-    loaded_model = pickle.load(open("model.pk", "rb"))
-    result = loaded_model.predict(to_predict)
-    return result[0]
  
-@app.route('/predict', methods = ['GET', 'POST'])
+@app.route('/predict', methods = ['POST'])
 def predict():
-    if request.method == 'POST':
-        to_predict_list = request.form.to_dict()
-        to_predict_list = list(to_predict_list.values())
-        to_predict_list = list(map(int, to_predict_list))
-        result = ValuePredictor(to_predict_list)        
-        if int(result)== 1:
-            prediction ='Unaccept'
-        else:
-            prediction ='Accept'           
-        return render_template("webapp2.html", prediction = prediction)
+    if flask.request.method == 'POST':
+        Genderin = flask.request.form['Gender']
+        Agein = flask.request.form['Age']
+        weightin = flask.request.form['Weight']
+        heightin = flask.request.form['Height']
+        BMIin = flask.request.form['BMI']
+        Tempin = flask.request.form['Temp']
+        RHin = flask.request.form['RH']
+        Vin = flask.request.form['V']
+        MRTin = flask.request.form['TMRT']
+        areain = flask.request.form['area']
+
+        input_variables = pd.DataFrame([[Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin, areain]],
+                                       columns=['Gender', 'Age', 'Weight', 'Height', 'BMI',
+                                                'Temp', 'RH', 'V', 'TMRT', 'area'],
+                                       dtype='float',
+                                       index=['input'])
+
+        predictions = model.predict(input_variables)[0]
+        print(predictions)
+
+        return flask.render_template('webapp2.html', original_input={'Gender': Genderin, 'Age': Agein, 'Weight': weightin, 
+                                                                     'Height': heightin, 'BMI': BMIin, 'Temp': Tempin, 
+                                                                     'RH': RHin, 'V': Vin, 'TMRT': TMRTin, 
+                                                                     'area': areain},
+                                     result=predictions)
 
 
-
-    
 #        try:
 #            prediction = preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT)
             # Pass prediction to template
