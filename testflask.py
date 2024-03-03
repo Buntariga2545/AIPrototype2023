@@ -44,52 +44,30 @@ def form_info():
         return render_template("webapp.html")
     
     elif request.method == "POST":
-        #get form data
-        Gender = request.form.get('gender')
-        Age = request.form.get('age')
-        Weight = request.form.get('weight')
-        Height = request.form.get('height')
-        BMI = request.form.get('bmi')
-        Temp= request.form.get('temp')
-        RH = request.form.get('rh')
-        V = request.form.get('v')
-        TMRT = request.form.get('tmrt')
-        Area = request.form.get('area')
-        print(Gender,file=sys.stdout)
-        print(Age,file=sys.stdout)
-        print(Weight,file=sys.stdout)
-        print(Height,file=sys.stdout)
-        print(BMI,file=sys.stdout)
-        print(Temp,file=sys.stdout)
-        print(RH,file=sys.stdout)
-        print(V,file=sys.stdout)
-        print(TMRT,file=sys.stdout)
-        print(Area,file=sys.stdout)
-
-        Gender = request.form.get('gender')
-        print('gender = ', Gender, file=sys.stdout)
-        Age = request.form.get('age')
-        print('age = ', Age, file=sys.stdout)      
-        Weight = request.form.get('weight') 
-        print('weight = ', Weight, file=sys.stdout)
-        Height = request.form.get('height')
-        print('height = ', Height, file=sys.stdout)
-        BMI = request.form.get('bmi')
-        print('bmi = ', BMI, file=sys.stdout)
-        Temp = request.form.get('temp')
-        print('temp = ', Temp, file=sys.stdout)
-        RH = request.form.get('rh')
-        print('rh = ', RH, file=sys.stdout)
-        V = request.form.get('v')
-        print('v = ', V, file=sys.stdout)
-        TMRT = request.form.get('tmrt')
-        print('tmrt = ', TMRT, file=sys.stdout)
-        Area = request.form.get('area')
-        print('area = ', Area, file=sys.stdout)
+        Genderin = request.form.get('Gender')
+        print('Gender = ', Genderin, file=sys.stdout)
+        Agein = request.form.get('Age')
+        print('Age = ', Agein, file=sys.stdout)      
+        Weightin = request.form.get('Weight') 
+        print('Weight = ', Weightin, file=sys.stdout)
+        Heightin = request.form.get('Height')
+        print('Height = ', Heightin, file=sys.stdout)
+        BMIin = request.form.get('BMI')
+        print('BMI = ', BMIin, file=sys.stdout)
+        Tempin = request.form.get('Temp')
+        print('Temp = ', Tempin, file=sys.stdout)
+        RHin = request.form.get('RH')
+        print('RH = ', RHin, file=sys.stdout)
+        Vin = request.form.get('V')
+        print('V = ', Vin, file=sys.stdout)
+        TMRTin = request.form.get('TMRT')
+        print('TMRT = ', TMRTin, file=sys.stdout)
+        Areain = request.form.get('Area')
+        print('Area = ', Areain, file=sys.stdout)
 
    
         try:
-            prediction = preprocessDataAndPredict(Gender, Age, Weight, Height, BMI, Temp, RH, V, TMRT, Area)
+            prediction = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain)
             # Pass prediction to template
             return render_template('webapp2.html', prediction=prediction)
 
@@ -105,10 +83,10 @@ def form_info():
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
 
-def preprocessDataAndPredict(Gender, Age, Weight, Height, BMI, Temp, RH, V, TMRT, Area):
+def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain):
     #put all inputs in array
 #   test_data = pd.read_csv('data TSV.csv')
-    test_data = [[Gender, Age, Weight, Height, BMI, Temp, RH, V, TMRT, Area]]
+    test_data = [[Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain]]
     print(test_data)
 
     test_data = np.array(test_data)
@@ -130,28 +108,10 @@ def preprocessDataAndPredict(Gender, Age, Weight, Height, BMI, Temp, RH, V, TMRT
 #    return render_template('webapp2.html') #,gender=gender, age=age, weight=weight, heigh
 
 
-@app.route('/predict', methods = ['POST'])
+@app.route('/predict', methods = ['POST', 'GET'])
 def predict():
-    if request.method == "POST":
-        Genderin = request.form['Gender']
-        Agein = request.form['Age']
-        weightin = request.form['Weight']
-        heightin = request.form['Height']
-        BMIin = request.form['BMI']
-        Tempin = request.form['Temp']
-        RHin = request.form['RH']
-        Vin = request.form['V']
-        TMRTin = request.form['TMRT']
-        areain = request.form['area']
+    return render_template('webapp2.html')
 
-        input_variables = pd.DataFrame([[Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, TMRTin, areain]],
-                                       columns=['Gender', 'Age', 'Weight', 'Height', 'BMI',
-                                                'Temp', 'RH', 'V', 'TMRT', 'area'],
-                                       dtype='float',
-                                       index=['input'])
-
-        predictions = model.predict(input_variables)[0]
-        print(predictions)
 
 #        return flask.render_template('webapp2.html', original_input={'Gender': Genderin, 'Age': Agein, 'Weight': weightin, 
 #                                                                     'Height': heightin, 'BMI': BMIin, 'Temp': Tempin, 
