@@ -1,7 +1,7 @@
 from crypt import methods
 from doctest import debug
 from flask import Flask, flash, request, redirect, render_template, make_response
-form joblib import dump, load
+from joblib import dump, load
 
 import numpy as np
 import pandas as pd
