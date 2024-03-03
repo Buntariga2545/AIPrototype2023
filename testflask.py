@@ -15,6 +15,8 @@ with open(f'../AIPrototype2023/model/model.pkl', 'rb') as f:
 
 app = Flask(__name__)
 
+Gender = {0: 'ชาย', 1: 'หญิง'}
+Area = {1: 'ภายนอก/มีหลังคาคลุม', 2: 'ภายนอก/กลางแจ้ง', 3: 'ภายนอก/ใต้ร่มไม้', 4: 'ภายใต้อาคาร'}
 #load the model
 #model = pickle.load(open('savemodel.sav', 'rb'))
 
