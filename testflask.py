@@ -61,10 +61,10 @@ def form_info():
        print('V = ', Vin, file=sys.stdout)
        MRTin = request.form.get('MRT')
        print('MRT = ', MRTin, file=sys.stdout)
-       arein = request.form.get('are')
-       print('are = ', arein, file=sys.stdout)
+       areain = request.form.get('area')
+       print('area = ', areain, file=sys.stdout)
 
-       return render_template("webapp.html", data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin, arein])
+       return render_template("webapp.html", data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin, areain])
 
     elif request.method == "GET":
        print('Results', file=sys.stdout)
@@ -87,20 +87,20 @@ def res():
        return render_template("webapp2.html")
 
 
-@app.route('/predict/', methods = ['GET', 'POST'])
+@app.route("/predict", methods = ['GET', 'POST'])
 def predict():
     if request.method == "POST":
         # Get form data
-        Age = request.form.get('Age')
-        Weight = request.form.get('Weight')
-        Height = request.form.get('Height')
-        BMI = request.form.get('BMI')
-        Temp = request.form.get('Temp')
-        RH = request.form.get('%RH')
-        V = request.form.get('V')
-        MRT = request.form.get('MRT')
+        Agein = request.form.get('Age')
+        weightin = request.form.get('Weight')
+        heightin = request.form.get('Height')
+        BMIin = request.form.get('BMI')
+        Tempin = request.form.get('Temp')
+        RHin = request.form.get('%RH')
+        Vin = request.form.get('V')
+        MRTin = request.form.get('MRT')
 
-        test_data = pd.DataFrame([[Age, Weight, Height, BMI, Temp, RH, V, MRT]],
+        test_data = pd.DataFrame([[Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin]],
                                     columns=['Age', 'Weight', 'Height', 'BMI', 
                                          'Temp', 'RH', 'V', 'MRT'],
                                     dtype='float',
@@ -109,8 +109,8 @@ def predict():
         prediction = model.predict(test_data)[0]
         print(prediction)
 
-        return render_template('webapp2.html', original_input={'Age': Age, 'Weight': Weight, 'Height': Height, 'BMI': BMI, 
-                                'Temp': Temp, '%RH': RH, 'V': V, 'MRT': MRT},
+        return render_template('webapp2.html', original_input={'Age': Agein, 'Weight': weightin, 'Height': heightin, 'BMI': BMIin, 
+                                'Temp': Tempin, '%RH': RHin, 'V': Vin, 'MRT': MRTin},
                                 result=prediction)
     
 #        try:
