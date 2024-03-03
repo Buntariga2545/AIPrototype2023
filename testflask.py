@@ -95,13 +95,13 @@ def preprocessDataAndPredict(Gender, Age, Weight, Height, BMI, Temp, RH, V, TMRT
     print(test_data)
 
     #open file
-    file = open("model.pkl","rb")
+#    file = open("model.pkl","rb")
 
     #load trained model
-    trained_model = joblib.load(file)
+#    trained_model = joblib.load(file)
 
     #predict
-    prediction = trained_model.predict(test_data)
+    prediction = model.predict(test_data)
     return prediction
     
 
