@@ -35,11 +35,11 @@
                 <label for="dot-2"> Female </label>
               </div>
             </div> -->
-
+            
             <div class="input-field">
               <label for="gender"><font style="font-size: 16px;"><strong>Gender<br></strong></font></label>
-              <select id="gender" type="text" name="gender" placeholder="Select your area" required>
-                <option value="area">Select your gender</option>
+              <select id="gender" type="text" name="Gender" placeholder="Select your area" required>
+
                 <option value="0"> ชาย</option>
                 <option value="1"> หญิง</option>
               </select>
@@ -93,8 +93,8 @@
 
             <div class="input-field">
               <label for="area"><font style="font-size: 16px;"><strong>Area<br></strong></font></label>
-              <select id="area" type="text" name="area" placeholder="Select your area" required>
-                <option value="area">Select your area</option>
+              <select id="area" type="text" name="Area" placeholder="Select your area" required>
+
                 <option value="1"> ภายนอก/มีหลังคาคลุม</option>
                 <option value="2"> ภายนอก/กลางแจ้ง</option>
                 <option value="3"> ภายนอก/ใต้ร่มไม้</option>
@@ -108,7 +108,7 @@
 
             <button class="nextBtn">
               <!--<span class="btnText">Submit</span>-->
-              <a href="{{ url_for('form_info') }}" class="btnText">Submit</a>
+              <a href="{{ url_for('predict') }}" class="btnText">Submit</a>
               <i class="uil uil-navigator"></i>
           </button>
           </div>
