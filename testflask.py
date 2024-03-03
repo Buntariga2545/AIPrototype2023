@@ -37,42 +37,64 @@ def helloworld():
 def homefn():
        return render_template("webapp1.html")
 
-@app.route("/form", methods=['POST'])
+
+@app.route("/form", methods=['POST','GET'])
 def form_info():
-    if request.method == "POST":
-       print('Results', file=sys.stdout)
-
-       Genderin = request.form.get('Gender')
-       print('Gender = ', Genderin, file=sys.stdout)
-       Agein = request.form.get('Age')
-       print('Age = ', Agein, file=sys.stdout)      
-       weightin = request.form.get('Weight') 
-       print('Weight = ', weightin, file=sys.stdout)
-       heightin = request.form.get('Height')
-       print('Height = ', heightin, file=sys.stdout)
-       BMIin = request.form.get('BMI')
-       print('BMI = ', BMIin, file=sys.stdout)
-       Tempin = request.form.get('Temp')
-       print('Temp = ', Tempin, file=sys.stdout)
-       RHin = request.form.get('RH')
-       print('RH = ', RHin, file=sys.stdout)
-       Vin = request.form.get('V')
-       print('V = ', Vin, file=sys.stdout)
-       TMRTin = request.form.get('TMRT')
-       print('TMRT = ', TMRTin, file=sys.stdout)
-       areain = request.form.get('area')
-       print('area = ', areain, file=sys.stdout)
-
-       return render_template("webapp2.html")  #data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, TMRTin, areain])
+    if request.method == "GET":
+        return render_template("webapp.html")
     
+    elif request.method == "POST":
+        #get form data
+        gender = request.form.get('genderin')
+        age = request.form.get('agein')
+        weight = request.form.get('weightin')
+        height = request.form.get('heightin')
+        bmi = request.form.get('bmiin')
+        temp= request.form.get('tempin')
+        rh = request.form.get('rhin')
+        v = request.form.get('vin')
+        tmrt = request.form.get('tmrtin')
+        area = request.form.get('area')
+        print(gender,file=sys.stdout)
+        print(age,file=sys.stdout)
+        print(weight,file=sys.stdout)
+        print(height,file=sys.stdout)
+        print(bmi,file=sys.stdout)
+        print(temp,file=sys.stdout)
+        print(rh,file=sys.stdout)
+        print(v,file=sys.stdout)
+        print(tmrt,file=sys.stdout)
+        print(area,file=sys.stdout)
 
+   
+        try:
+            prediction = preprocessDataAndPredict(gender, age, weight, height, bmi, temp, rh, v, tmrt, area)
+            # Pass prediction to template
+            return render_template('webapp2.html', prediction=prediction)
+        except ValueError:
+            return "Please Enter valid values"
 #       print('เจอละ(POST)', file=sys.stdout)
 #       Agein = request.form.get('ticketNum')
 #       weightin = request.form.get('ticketNum')
 #       print(Agein, file=sys.stdout)
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
+
+def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
+    #put all inputs in array
+    test_data = pd.read_csv('data TSV.csv')
+    print(test_data)
+    #open file
+    file = open("model.pkl","rb")
+    #load trained model
+    trained_model = joblib.load(file)
+    #predict
+    prediction = trained_model.predict(test_data)
+    return render_template('webapp2.html', prediction = prediction)
     
+
+    result = model.predict([[gender, age, weight, height, bmi, temp,rh,v,tmrt,area]])[0]
+    return render_template('webapp2.html') #,gender=gender, age=age, weight=weight, heigh
 
 
 @app.route('/predict', methods = ['POST'])
@@ -104,7 +126,7 @@ def predict():
 #                                                                     'area': areain},
 #                                     result=predictions)
     
-        return render_template("webapp2.html", prediction=predictions)
+#        return render_template("webapp2.html", prediction=predictions)
 
 
 #        try:
@@ -113,9 +135,9 @@ def predict():
 #            return render_template('webapp2.html', prediction=prediction)
 #        except ValueError:
 #            return "Please Enter valid values"
-#    else:
+ #   else:
         # Handle GET request
-#        return render_template('webapp2.html')
+ #       return render_template('webapp2.html')
 
 #def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     # Put all inputs in array
