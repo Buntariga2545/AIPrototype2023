@@ -4,10 +4,14 @@ from flask import Flask, flash, request, redirect, render_template, make_respons
 
 import numpy as np
 import pandas as pd
-import joblib
+import joblib 
 import pickle
 import json
 import sys
+
+with open(f'model/model.pk', 'rb') as f:
+    model = load(f)
+
 
 app = Flask(__name__)
 
@@ -58,18 +62,15 @@ def form_info():
        print('MRT = ', MRTin, file=sys.stdout)
        arein = request.form.get('are')
        print('are = ', arein, file=sys.stdout)
+
        return render_template("webapp.html", data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin, arein])
 
     elif request.method == "GET":
        print('Results', file=sys.stdout)
-
        Agein = request.form.get('Age')
-       print('Age = ', Agein, file=sys.stdout)
-       print(Agein, file=sys.stdout)
-       
+       print('Age = ', Agein, file=sys.stdout)   
        weightin = request.form.get('Weight')
        print('Weight = ', weightin, file=sys.stdout)
-       print(weightin, file=sys.stdout)
        return render_template("webapp.html", data = [Agein, weightin])
        
 #       print('เจอละ(POST)', file=sys.stdout)
@@ -78,7 +79,6 @@ def form_info():
 #       print(Agein, file=sys.stdout)
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
-
 
 
 @app.route("/res", methods=['POST','GET'])
@@ -98,17 +98,31 @@ def predict():
         RH = request.form.get('%RH')
         V = request.form.get('V')
         MRT = request.form.get('MRT')
-        try:
+
+        test_data = pd.DataFrame([[Age, Weight, Height, BMI, Temp, RH, V, MRT]],
+                                    columns=['Age', 'Weight', 'Height', 'BMI', 
+                                         'Temp', 'RH', 'V', 'MRT'],
+                                    dtype='float',
+                                    index=['input'])
+        
+        prediction = model.predict(test_data)[0]
+        print(prediction)
+
+        return render_template('webapp2.html', original_input={'Age': Age, 'Weight': Weight, 'Height': Height, 'BMI': BMI, 
+                                'Temp': Temp, '%RH': RH, 'V': V, 'MRT': MRT},
+                                result=prediction)
+        
+#        try:
             prediction = preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT)
             # Pass prediction to template
             return render_template('webapp2.html', prediction=prediction)
-        except ValueError:
-            return "Please Enter valid values"
+#        except ValueError:
+#            return "Please Enter valid values"
     else:
         # Handle GET request
-        return render_template('webapp.html')
+#        return render_template('webapp2.html')
 
-def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
+#def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     # Put all inputs in array
     test_data = np.array([[Age, Weight, Height, BMI, Temp, RH, V, MRT]])
     
