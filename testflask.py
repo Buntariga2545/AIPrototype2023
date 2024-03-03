@@ -63,7 +63,7 @@ def form_info():
        areain = request.form.get('area')
        print('area = ', areain, file=sys.stdout)
 
-       return render_template("webapp2.html", data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, TMRTin, areain])
+       return render_template("webapp2.html")  #data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, TMRTin, areain])
 
     elif request.method == "GET":
        print('Results', file=sys.stdout)
@@ -92,10 +92,10 @@ def predict():
         Tempin = flask.request.form['Temp']
         RHin = flask.request.form['RH']
         Vin = flask.request.form['V']
-        MRTin = flask.request.form['TMRT']
+        TMRTin = flask.request.form['TMRT']
         areain = flask.request.form['area']
 
-        input_variables = pd.DataFrame([[Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin, areain]],
+        input_variables = pd.DataFrame([[Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, TMRTin, areain]],
                                        columns=['Gender', 'Age', 'Weight', 'Height', 'BMI',
                                                 'Temp', 'RH', 'V', 'TMRT', 'area'],
                                        dtype='float',
