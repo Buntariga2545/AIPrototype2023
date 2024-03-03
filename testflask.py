@@ -37,7 +37,7 @@ def helloworld():
 def homefn():
        return render_template("webapp1.html")
 
-@app.route("/form", methods=['POST','GET'])
+@app.route("/form", methods=['POST'])
 def form_info():       
 #       print('เจอละ(POST)', file=sys.stdout)
 #       Agein = request.form.get('ticketNum')
@@ -45,17 +45,17 @@ def form_info():
 #       print(Agein, file=sys.stdout)
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
-    if flask.request.method == 'POST':
-        Genderin = flask.request.form['Gender']
-        Agein = flask.request.form['Age']
-        weightin = flask.request.form['Weight']
-        heightin = flask.request.form['Height']
-        BMIin = flask.request.form['BMI']
-        Tempin = flask.request.form['Temp']
-        RHin = flask.request.form['RH']
-        Vin = flask.request.form['V']
-        TMRTin = flask.request.form['TMRT']
-        areain = flask.request.form['area']
+    if request.method == "POST":
+        Genderin = request.form['Gender']
+        Agein = request.form['Age']
+        weightin = request.form['Weight']
+        heightin = request.form['Height']
+        BMIin = request.form['BMI']
+        Tempin = request.form['Temp']
+        RHin = request.form['RH']
+        Vin = request.form['V']
+        TMRTin = request.form['TMRT']
+        areain = request.form['area']
 
         input_variables = pd.DataFrame([[Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, TMRTin, areain]],
                                        columns=['Gender', 'Age', 'Weight', 'Height', 'BMI',
