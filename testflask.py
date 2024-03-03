@@ -64,7 +64,7 @@ def form_info():
        areain = request.form.get('area')
        print('area = ', areain, file=sys.stdout)
 
-       return render_template("webapp.html", data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin, areain])
+       return render_template("webapp2.html", data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin, areain])
 
     elif request.method == "GET":
        print('Results', file=sys.stdout)
