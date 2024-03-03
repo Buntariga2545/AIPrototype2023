@@ -107,8 +107,8 @@ def predict():
         return render_template("webapp2.html", prediction = prediction)
 
 
-@app.route("/predict", methods = ['GET', 'POST'])
-def predict():
+@app.route("/res", methods = ['GET', 'POST'])
+def res():
     if request.method == "POST":
         # Get form data
         Agein = request.form.get('Age')
