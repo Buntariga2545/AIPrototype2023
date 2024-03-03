@@ -45,34 +45,38 @@ def form_info():
     
     elif request.method == "POST":
         #get form data
-        gender = request.form.get('genderin')
-        age = request.form.get('agein')
-        weight = request.form.get('weightin')
-        height = request.form.get('heightin')
-        bmi = request.form.get('bmiin')
-        temp= request.form.get('tempin')
-        rh = request.form.get('rhin')
-        v = request.form.get('vin')
-        tmrt = request.form.get('tmrtin')
-        area = request.form.get('area')
-        print(gender,file=sys.stdout)
-        print(age,file=sys.stdout)
-        print(weight,file=sys.stdout)
-        print(height,file=sys.stdout)
-        print(bmi,file=sys.stdout)
-        print(temp,file=sys.stdout)
-        print(rh,file=sys.stdout)
-        print(v,file=sys.stdout)
-        print(tmrt,file=sys.stdout)
-        print(area,file=sys.stdout)
+        Gender = request.form.get('gender')
+        Age = request.form.get('age')
+        Weight = request.form.get('weight')
+        Height = request.form.get('height')
+        BMI = request.form.get('bmi')
+        Temp= request.form.get('temp')
+        RH = request.form.get('rh')
+        V = request.form.get('v')
+        TMRT = request.form.get('tmrt')
+        Area = request.form.get('area')
+        print(Gender,file=sys.stdout)
+        print(Age,file=sys.stdout)
+        print(Weight,file=sys.stdout)
+        print(Height,file=sys.stdout)
+        print(BMI,file=sys.stdout)
+        print(Temp,file=sys.stdout)
+        print(RH,file=sys.stdout)
+        print(V,file=sys.stdout)
+        print(TMRT,file=sys.stdout)
+        print(Area,file=sys.stdout)
 
    
         try:
-            prediction = preprocessDataAndPredict(gender, age, weight, height, bmi, temp, rh, v, tmrt, area)
+            prediction = preprocessDataAndPredict(Gender, Age, Weight, Height, BMI, Temp, RH, V, TMRT, Area)
             # Pass prediction to template
             return render_template('webapp2.html', prediction=prediction)
+
+
         except ValueError:
             return "Please Enter valid values"
+
+
 #       print('เจอละ(POST)', file=sys.stdout)
 #       Agein = request.form.get('ticketNum')
 #       weightin = request.form.get('ticketNum')
@@ -84,17 +88,20 @@ def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     #put all inputs in array
     test_data = pd.read_csv('data TSV.csv')
     print(test_data)
+    
     #open file
     file = open("model.pkl","rb")
+
     #load trained model
     trained_model = joblib.load(file)
+
     #predict
     prediction = trained_model.predict(test_data)
-    return render_template('webapp2.html', prediction = prediction)
+    return prediction
     
 
-    result = model.predict([[gender, age, weight, height, bmi, temp,rh,v,tmrt,area]])[0]
-    return render_template('webapp2.html') #,gender=gender, age=age, weight=weight, heigh
+#    result = model.predict([[gender, age, weight, height, bmi, temp,rh,v,tmrt,area]])[0]
+#    return render_template('webapp2.html') #,gender=gender, age=age, weight=weight, heigh
 
 
 @app.route('/predict', methods = ['POST'])
