@@ -2,6 +2,7 @@ from crypt import methods
 from doctest import debug
 from flask import Flask, flash, request, redirect, render_template, make_response
 
+import numpy as np
 import pandas as pd
 import joblib
 import pickle
@@ -37,14 +38,27 @@ def form_info():
     if request.method == "POST":
        print('Results', file=sys.stdout)
 
+       Genderin = request.form.get('Gender')
+       print('Gender = ', Genderin, file=sys.stdout)
        Agein = request.form.get('Age')
-       print('Age = ', Agein, file=sys.stdout)
-       print(Agein, file=sys.stdout)
-       
-       weightin = request.form.get('Weight')
+       print('Age = ', Agein, file=sys.stdout)      
+       weightin = request.form.get('Weight') 
        print('Weight = ', weightin, file=sys.stdout)
-       print(weightin, file=sys.stdout)
-       return render_template("webapp.html", data = [Agein, weightin])
+       heightin = request.form.get('Height')
+       print('Height = ', heightin, file=sys.stdout)
+       BMIin = request.form.get('BMI')
+       print('BMI = ', BMIin, file=sys.stdout)
+       Tempin = request.form.get('Temp')
+       print('Temp = ', Tempin, file=sys.stdout)
+       RHin = request.form.get('%RH')
+       print('%RH = ', RHin, file=sys.stdout)
+       Vin = request.form.get('V')
+       print('V = ', Vin, file=sys.stdout)
+       MRTin = request.form.get('MRT')
+       print('MRT = ', MRTin, file=sys.stdout)
+       arein = request.form.get('are')
+       print('are = ', arein, file=sys.stdout)
+       return render_template("webapp.html", data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin, arein])
 
     elif request.method == "GET":
        print('Results', file=sys.stdout)
@@ -90,8 +104,21 @@ def predict():
             return render_template('webapp2.html', prediction = prediction)
         except ValueError:
             return "Please Enter valid values"
-    
+
 def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
+    # Put all inputs in array
+    test_data = np.array([[Age, Weight, Height, BMI, Temp, RH, V, MRT]])
+    
+    # Open file
+    file = open("model.pk","rb")
+    # Load trained model
+    trained_model = joblib.load(file)
+    # Predict
+    prediction = trained_model.predict(test_data)
+    
+    return prediction
+    
+#def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     #put all inputs in array
     test_data = pd.read_csv('test_data.csv')
     print(test_data)
@@ -109,7 +136,7 @@ def upload_file():
     if request.method == 'POST':
         file = request.files['file']
         file.save('file')
-        return render_template("webapp.html",name='upload completed')
+        return render_template("webapp.html", name='upload completed')
 
     return '''
     <!doctype html>
