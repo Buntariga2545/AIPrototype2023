@@ -111,7 +111,7 @@ def predict():
         return render_template('webapp2.html', original_input={'Age': Age, 'Weight': Weight, 'Height': Height, 'BMI': BMI, 
                                 'Temp': Temp, '%RH': RH, 'V': V, 'MRT': MRT},
                                 result=prediction)
-        
+    
 #        try:
             prediction = preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT)
             # Pass prediction to template
