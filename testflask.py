@@ -84,11 +84,11 @@ def form_info():
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
 
-def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
+def preprocessDataAndPredict(Gender, Age, Weight, Height, BMI, Temp, RH, V, MRT, Area):
     #put all inputs in array
     test_data = pd.read_csv('data TSV.csv')
     print(test_data)
-    
+
     #open file
     file = open("model.pkl","rb")
 
