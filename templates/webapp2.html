@@ -65,18 +65,18 @@
 <!doctype html>
 <html>
    <body>
-       <h1> {{ predictions }} </h1>
+       <h1> {{ prediction }} </h1>
    </body>
 </html>
 
-      <h1>Output is <span style="color:red;">{{ predictions[0].round(3) }}</span></h1>
+      <h1>Output is: <span style="color:red;">{{ prediction[0].round(3) }}</span></h1>
 
-<div class="result" align="center">
-  {% if predictions %} {% for variable, value in original_input.items() %}
+<div class="predictions" align="center">
+  {% if prediction %} {% for variable, value in original_input.items() %}
   <b>{{ variable }}</b> : {{ value }} {% endfor %}
   <br>
   <br>
   <h1>Predicted TSV:</h1>
-  <p style="font-size:50px">{{ result }}</p>
+  <p style="font-size:50px">{{ prediction }}</p>
   {% endif %}
 </div>
