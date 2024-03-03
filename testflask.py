@@ -81,10 +81,6 @@ def form_info():
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
 
-@app.route("/res", methods=['POST','GET'])
-def res():
-       return render_template("webapp2.html")
-
 
 # prediction function
 def ValuePredictor(to_predict_list):
@@ -107,31 +103,7 @@ def predict():
         return render_template("webapp2.html", prediction = prediction)
 
 
-@app.route("/res", methods = ['GET', 'POST'])
-def res():
-    if request.method == "POST":
-        # Get form data
-        Agein = request.form.get('Age')
-        weightin = request.form.get('Weight')
-        heightin = request.form.get('Height')
-        BMIin = request.form.get('BMI')
-        Tempin = request.form.get('Temp')
-        RHin = request.form.get('%RH')
-        Vin = request.form.get('V')
-        MRTin = request.form.get('MRT')
 
-        test_data = pd.DataFrame([[Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, MRTin]],
-                                    columns=['Age', 'Weight', 'Height', 'BMI', 
-                                         'Temp', 'RH', 'V', 'MRT'],
-                                    dtype='float',
-                                    index=['input'])
-        
-        prediction = model.predict(test_data)[0]
-        print(prediction)
-
-        return render_template('webapp2.html')#, original_input={'Age': Agein, 'Weight': weightin, 'Height': heightin, 'BMI': BMIin, 
-                               # 'Temp': Tempin, '%RH': RHin, 'V': Vin, 'MRT': MRTin},
-                                #result=prediction)
     
 #        try:
 #            prediction = preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT)
