@@ -81,10 +81,30 @@ def form_info():
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
 
-
 @app.route("/res", methods=['POST','GET'])
 def res():
        return render_template("webapp2.html")
+
+
+# prediction function
+def ValuePredictor(to_predict_list):
+    to_predict = np.array(to_predict_list).reshape(1, 10)
+    loaded_model = pickle.load(open("model.pk", "rb"))
+    result = loaded_model.predict(to_predict)
+    return result[0]
+ 
+@app.route('/predict', methods = ['GET', 'POST'])
+def predict():
+    if request.method == 'POST':
+        to_predict_list = request.form.to_dict()
+        to_predict_list = list(to_predict_list.values())
+        to_predict_list = list(map(int, to_predict_list))
+        result = ValuePredictor(to_predict_list)        
+        if int(result)== 1:
+            prediction ='Unaccept'
+        else:
+            prediction ='Accept'           
+        return render_template("webapp2.html", prediction = prediction)
 
 
 @app.route("/predict", methods = ['GET', 'POST'])
@@ -125,16 +145,16 @@ def predict():
 
 #def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     # Put all inputs in array
-    test_data = np.array([[Age, Weight, Height, BMI, Temp, RH, V, MRT]])
+#    test_data = np.array([[Age, Weight, Height, BMI, Temp, RH, V, MRT]])
     
     # Open file
-    file = open("model.pk","rb")
+#    file = open("model.pk","rb")
     # Load trained model
-    trained_model = joblib.load(file)
+#    trained_model = joblib.load(file)
     # Predict
-    prediction = trained_model.predict(test_data)
+#    prediction = trained_model.predict(test_data)
     
-    return prediction
+#    return prediction
     
 #def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     #put all inputs in array
