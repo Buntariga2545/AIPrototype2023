@@ -38,51 +38,13 @@ def homefn():
        return render_template("webapp1.html")
 
 @app.route("/form", methods=['POST','GET'])
-def form_info():
-    if request.method == "POST":
-       print('Results', file=sys.stdout)
-
-       Genderin = request.form.get('Gender')
-       print('Gender = ', Genderin, file=sys.stdout)
-       Agein = request.form.get('Age')
-       print('Age = ', Agein, file=sys.stdout)      
-       weightin = request.form.get('Weight') 
-       print('Weight = ', weightin, file=sys.stdout)
-       heightin = request.form.get('Height')
-       print('Height = ', heightin, file=sys.stdout)
-       BMIin = request.form.get('BMI')
-       print('BMI = ', BMIin, file=sys.stdout)
-       Tempin = request.form.get('Temp')
-       print('Temp = ', Tempin, file=sys.stdout)
-       RHin = request.form.get('RH')
-       print('RH = ', RHin, file=sys.stdout)
-       Vin = request.form.get('V')
-       print('V = ', Vin, file=sys.stdout)
-       TMRTin = request.form.get('TMRT')
-       print('TMRT = ', TMRTin, file=sys.stdout)
-       areain = request.form.get('area')
-       print('area = ', areain, file=sys.stdout)
-
-       return render_template("webapp2.html")  #data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, TMRTin, areain])
-
-    elif request.method == "GET":
-       print('Results', file=sys.stdout)
-       Agein = request.form.get('Age')
-       print('Age = ', Agein, file=sys.stdout)   
-       weightin = request.form.get('Weight')
-       print('Weight = ', weightin, file=sys.stdout)
-       return render_template("webapp.html", data = [Agein, weightin])
-       
+def form_info():       
 #       print('เจอละ(POST)', file=sys.stdout)
 #       Agein = request.form.get('ticketNum')
 #       weightin = request.form.get('ticketNum')
 #       print(Agein, file=sys.stdout)
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
-
- 
-@app.route('/predict', methods = ['POST'])
-def predict():
     if flask.request.method == 'POST':
         Genderin = flask.request.form['Gender']
         Agein = flask.request.form['Age']
