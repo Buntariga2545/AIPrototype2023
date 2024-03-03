@@ -113,12 +113,12 @@ def predict():
                                 result=prediction)
     
 #        try:
-            prediction = preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT)
+#            prediction = preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT)
             # Pass prediction to template
-            return render_template('webapp2.html', prediction=prediction)
+#            return render_template('webapp2.html', prediction=prediction)
 #        except ValueError:
 #            return "Please Enter valid values"
-    else:
+#    else:
         # Handle GET request
 #        return render_template('webapp2.html')
 
