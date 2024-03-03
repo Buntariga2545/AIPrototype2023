@@ -61,3 +61,40 @@
   </body>
 </html>
           
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>Thermal Comfort</title>
+
+  </head>
+
+  <body>
+    <form action="{{url_for('predict')}}" method="POST" enctype="multipart/form-data"></form>
+    <div class="container">
+      <header><h2><center>Result</center></h2></header>
+
+      <div class="result" align="center">
+        <div class="btn-group">
+          {% if result %}
+            {% for variable, value in original_u.items() %}
+              <b>{{ variable }}</b>: {{ value }}<br>
+            {% endfor %}
+            <br>
+            <h1>Output is <span style="color:red;">{{ result }}</span></h1>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
