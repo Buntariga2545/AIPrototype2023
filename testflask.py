@@ -43,9 +43,14 @@ def form_info():
     if request.method == "GET":
         return render_template("webapp.html")
     
+#        Gender = request.form.get('gender')
+#        Area = request.form.get('area')
+#        print(Gender,file=sys.stdout)
+#        print(Area,file=sys.stdout)
+    
     elif request.method == "POST":
         Genderin = request.form.get('Gender')
-        print('Gender = ', Genderin, file=sys.stdout)
+        print(Genderin, file=sys.stdout)
         Agein = request.form.get('Age')
         print('Age = ', Agein, file=sys.stdout)      
         Weightin = request.form.get('Weight') 
@@ -63,7 +68,7 @@ def form_info():
         TMRTin = request.form.get('TMRT')
         print('TMRT = ', TMRTin, file=sys.stdout)
         Areain = request.form.get('Area')
-        print('Area = ', Areain, file=sys.stdout)
+        print(Areain, file=sys.stdout)
 
    
         try:
