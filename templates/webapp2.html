@@ -41,11 +41,11 @@
   </head>
 
   <body>
-    <form action="{{url_for('predict')}}" method="POST" enctype="multipart/form-data"></form>
+    <form action="{{url_for('predict')}}" method="GET,POST" enctype="multipart/form-data"></form>
       <div class="container">
         <header><h2><center>Result</center></h2></header>
 
-        <div class="resulr" align = "center" >
+        <div class="result" align = "center" >
           <div class="btn-group">
             {% if result %} {% for variable, value in original_u=input.items() %}
             <b>{{ variable }}</b> : {{value}} {% enfor %}
