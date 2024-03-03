@@ -10,7 +10,7 @@ import pickle
 import json
 import sys
 
-with open(f'model/model.pkl', 'rb') as f:
+with open(f'../AIPrototype2023/model/model.pkl', 'rb') as f:
     model = load(f)
 
 app = Flask(__name__)
@@ -38,13 +38,45 @@ def homefn():
        return render_template("webapp1.html")
 
 @app.route("/form", methods=['POST'])
-def form_info():       
+def form_info():
+    if request.method == "POST":
+       print('Results', file=sys.stdout)
+
+       Genderin = request.form.get('Gender')
+       print('Gender = ', Genderin, file=sys.stdout)
+       Agein = request.form.get('Age')
+       print('Age = ', Agein, file=sys.stdout)      
+       weightin = request.form.get('Weight') 
+       print('Weight = ', weightin, file=sys.stdout)
+       heightin = request.form.get('Height')
+       print('Height = ', heightin, file=sys.stdout)
+       BMIin = request.form.get('BMI')
+       print('BMI = ', BMIin, file=sys.stdout)
+       Tempin = request.form.get('Temp')
+       print('Temp = ', Tempin, file=sys.stdout)
+       RHin = request.form.get('RH')
+       print('RH = ', RHin, file=sys.stdout)
+       Vin = request.form.get('V')
+       print('V = ', Vin, file=sys.stdout)
+       TMRTin = request.form.get('TMRT')
+       print('TMRT = ', TMRTin, file=sys.stdout)
+       areain = request.form.get('area')
+       print('area = ', areain, file=sys.stdout)
+
+       return render_template("webapp2.html")  #data = [Genderin, Agein, weightin, heightin, BMIin, Tempin, RHin, Vin, TMRTin, areain])
+    
+
 #       print('เจอละ(POST)', file=sys.stdout)
 #       Agein = request.form.get('ticketNum')
 #       weightin = request.form.get('ticketNum')
 #       print(Agein, file=sys.stdout)
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
+    
+
+
+@app.route('/predict', methods = ['POST'])
+def predict():
     if request.method == "POST":
         Genderin = request.form['Gender']
         Agein = request.form['Age']
