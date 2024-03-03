@@ -171,7 +171,7 @@ def upload_file():
     if request.method == 'POST':
         file = request.files['file']
         file.save('file')
-        return render_template("webapp.html", name='upload completed')
+        return render_template(".html", name='upload completed')
 
     return '''
     <!doctype html>
