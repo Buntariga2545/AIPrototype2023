@@ -84,9 +84,14 @@ def form_info():
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
 
-def preprocessDataAndPredict(Gender, Age, Weight, Height, BMI, Temp, RH, V, MRT, Area):
+def preprocessDataAndPredict(Gender, Age, Weight, Height, BMI, Temp, RH, V, TMRT, Area):
     #put all inputs in array
-    test_data = pd.read_csv('data TSV.csv')
+#   test_data = pd.read_csv('data TSV.csv')
+    test_data = [[Gender, Age, Weight, Height, BMI, Temp, RH, V, TMRT, Area]]
+    print(test_data)
+
+    test_data = np.array(test_data)
+    test_data = pd.DataFrame(test_data)
     print(test_data)
 
     #open file
