@@ -89,7 +89,7 @@ def res():
 @app.route('/predict/', methods = ['GET', 'POST'])
 def predict():
     if request.method == "POST":
-        #get form data
+        # Get form data
         Age = request.form.get('Age')
         Weight = request.form.get('Weight')
         Height = request.form.get('Height')
@@ -100,10 +100,13 @@ def predict():
         MRT = request.form.get('MRT')
         try:
             prediction = preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT)
-            #pass prediction to template
-            return render_template('webapp2.html', prediction = prediction)
+            # Pass prediction to template
+            return render_template('webapp2.html', prediction=prediction)
         except ValueError:
             return "Please Enter valid values"
+    else:
+        # Handle GET request
+        return render_template('webapp.html')
 
 def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
     # Put all inputs in array
