@@ -12,10 +12,7 @@ import sys
 
 with open(f'../AIPrototype2023/model/model.pkl', 'rb') as f:
     model = load(f)
-with open(f'../AIPrototype2023/model/model_tsv.pk', 'rb') as f:
-    model = load(f)
-with open(f'../AIPrototype2023/model/model.pk', 'rb') as f:
-    model = load(f)
+
 
 app = Flask(__name__)
 
