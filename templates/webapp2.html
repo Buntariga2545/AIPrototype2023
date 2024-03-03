@@ -70,11 +70,7 @@
 </html>
 
       <h1>Output is: <span style="color:red;">{{ prediction[0].round(3) }}</span></h1>
-
-<div class="predictions" align="center">
-  {% if prediction %} {% for variable, value in original_input.items() %}
-  <b>{{ variable }}</b> : {{ value }} {% endfor %}
-  <br>
+      
   <br>
   <h1>Predicted TSV:</h1>
   <p style="font-size:50px">{{ prediction }}</p>
