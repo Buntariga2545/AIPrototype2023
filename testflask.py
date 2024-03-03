@@ -66,6 +66,27 @@ def form_info():
         print(TMRT,file=sys.stdout)
         print(Area,file=sys.stdout)
 
+        Gender = request.form.get('gender')
+        print('gender = ', Gender, file=sys.stdout)
+        Age = request.form.get('age')
+        print('age = ', Age, file=sys.stdout)      
+        Weight = request.form.get('weight') 
+        print('weight = ', Weight, file=sys.stdout)
+        Height = request.form.get('height')
+        print('height = ', Height, file=sys.stdout)
+        BMI = request.form.get('bmi')
+        print('bmi = ', BMI, file=sys.stdout)
+        Temp = request.form.get('temp')
+        print('temp = ', Temp, file=sys.stdout)
+        RH = request.form.get('rh')
+        print('rh = ', RH, file=sys.stdout)
+        V = request.form.get('v')
+        print('v = ', V, file=sys.stdout)
+        TMRT = request.form.get('tmrt')
+        print('tmrt = ', TMRT, file=sys.stdout)
+        Area = request.form.get('area')
+        print('area = ', Area, file=sys.stdout)
+
    
         try:
             prediction = preprocessDataAndPredict(Gender, Age, Weight, Height, BMI, Temp, RH, V, TMRT, Area)
