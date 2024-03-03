@@ -68,3 +68,15 @@
        <h1> {{ prediction }} </h1>
    </body>
 </html>
+
+
+
+<div class="result" align="center">
+  {% if result %} {% for variable, value in original_input.items() %}
+  <b>{{ variable }}</b> : {{ value }} {% endfor %}
+  <br>
+  <br>
+  <h1>Predicted TSV:</h1>
+  <p style="font-size:50px">{{ result }}</p>
+  {% endif %}
+</div>
