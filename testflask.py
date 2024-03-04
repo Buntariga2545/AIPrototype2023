@@ -73,8 +73,8 @@ def form_info():
 
 
         try:
-            prediction1 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
-            prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)           
+            prediction1 = preprocessDataAndPredict_TA(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction2 = preprocessDataAndPredict_TSV(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)           
             # Pass predictions to template
             return render_template('webapp2.html', prediction1=prediction1, prediction2=prediction2)
         
@@ -82,7 +82,7 @@ def form_info():
             return "Please Enter valid values"
 
 
-def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
+def preprocessDataAndPredict_TA(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
     test_data1 = [[Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
     print(test_data1)
 
@@ -96,7 +96,7 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, 
     return prediction1
 
 
-def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
+def preprocessDataAndPredict_TSV(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
     test_data2 = [[Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
     print(test_data2)
 
