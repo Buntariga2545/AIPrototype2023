@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 #with open(f'../AIPrototype2023/model/model.pkl', 'rb') as f:
 #    model = load(f)
-with (open(f'../AIPrototype2023/model/tamodel.pk', 'rb')) as f:
+with (open(f'../AIPrototype2023/model/tamodel.pkl', 'rb')) as f:
     tamodel = load(f)
 with (open(f'../AIPrototype2023/model/model.pkl', 'rb')) as f:
     tsvmodel = load(f)
@@ -76,12 +76,12 @@ def form_info():
 
 
         try:
-#            prediction1 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction1 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
             prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
-#            all_predictions.append(prediction1)
+            all_predictions.append(prediction1)
             all_predictions.append(prediction2)            
             # Pass predictions to template
-            return render_template('webapp2.html', prediction2=prediction2)
+            return render_template('webapp2.html', prediction1=prediction1, prediction2=prediction2)
         
         except ValueError:
             return "Please Enter valid values"
@@ -96,10 +96,10 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, 
     print(test_data)
 
     #predict
-#    prediction1 = tamodel.predict(test_data)
+    prediction1 = tamodel.predict(test_data)
     prediction2 = tsvmodel.predict(test_data)
 
-    return prediction2
+    return prediction1, prediction2
 
 #for prediction in all_predictions:
 #    print(prediction)
