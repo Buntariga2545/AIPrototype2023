@@ -94,6 +94,7 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
     #predict
     prediction_ta = model_ta.predict(test_data)
     prediction_tsv = model_tsv.predict(test_data)
+    
     return prediction_ta, prediction_tsv
 
 
