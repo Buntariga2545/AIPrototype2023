@@ -75,8 +75,7 @@ def form_info():
 
 
         try:
-            prediction1 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
-            prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction1, prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
             # Pass predictions to template
             return render_template('webapp2.html', prediction1=prediction1, prediction2=prediction2)
         except ValueError:
