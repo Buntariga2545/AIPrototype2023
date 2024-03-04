@@ -83,13 +83,14 @@ def form_info():
 
    
         try:
-            prediction = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction_ta, prediction_tsv = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
             # Pass prediction to template
-            return render_template('webapp2.html', prediction=prediction)
+            return render_template('webapp2.html', prediction_ta=prediction_ta, prediction_tsv=prediction_tsv)
 
 
         except ValueError:
             return "Please Enter valid values"
+
 
 
 #       print('เจอละ(POST)', file=sys.stdout)
@@ -116,9 +117,13 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
 #    trained_model = joblib.load(file)
 
     #predict
-    prediction = model_ta.predict(test_data)
-    prediction = model_tsv.predict(test_data)
-    return prediction
+    prediction_ta = model_ta.predict(test_data)
+    prediction_tsv = model_tsv.predict(test_data)
+    return prediction_ta, prediction_tsv
+
+#    prediction = model_ta.predict(test_data)
+#    prediction = model_tsv.predict(test_data)
+#    return prediction
     
 
 #    result = model.predict([[gender, age, weight, height, bmi, temp,rh,v,tmrt,area]])[0]
