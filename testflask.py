@@ -86,12 +86,6 @@ def form_info():
         except ValueError:
             return "Please Enter valid values"
 
-#       print('เจอละ(POST)', file=sys.stdout)
-#       Agein = request.form.get('ticketNum')
-#       weightin = request.form.get('ticketNum')
-#       print(Agein, file=sys.stdout)
-#       print(weightin, file=sys.stdout)
-#       return render_template("webapp.html", Age=Agein)
 
 def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
     #put all inputs in array
@@ -133,6 +127,7 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
     #predict
     prediction_tsv = model_tsv.predict(test_data2)
     return prediction_tsv
+
 #    prediction = model_ta.predict(test_data)
 #    prediction = model_tsv.predict(test_data)
 #    return prediction
@@ -144,7 +139,7 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
 
 @app.route('/predict', methods = ['POST', 'GET'])
 def predict():
-    return render_template('webapp2.html', prediction_ta=prediction_ta, prediction_tsv=prediction_tsv)
+    return render_template('webapp2.html')
 
 
 @app.route('/upload', methods=['GET', 'POST'])
