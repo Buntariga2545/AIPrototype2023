@@ -73,13 +73,13 @@ def form_info():
         print('TMRT = ', TMRTin, file=sys.stdout)
         Areain = request.form.get('Area')
         print('Area = ', Areain, file=sys.stdout)
-        Seasonsin = request.form.get('Seasons')
-        print('Seasons = ', Seasonsin, file=sys.stdout)
+#        Seasonsin = request.form.get('Seasons')
+#        print('Seasons = ', Seasonsin, file=sys.stdout)
 
 
         try:
 #            prediction1 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
-            prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain)
 #            all_predictions.append(prediction1)
             all_predictions.append(prediction2)            
             # Pass predictions to template
@@ -89,8 +89,8 @@ def form_info():
             return "Please Enter valid values"
 
 
-def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
-    test_data = [[Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
+def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain):
+    test_data = [[Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain]]
     print(test_data)
 
     test_data = np.array(test_data)
