@@ -75,10 +75,10 @@ def form_info():
 
 
         try:
-            prediction_ta = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
-            prediction_tsv = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction1 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
             # Pass predictions to template
-            return render_template('webapp2.html', prediction_ta=prediction_ta, prediction_tsv=prediction_tsv)
+            return render_template('webapp2.html', prediction1=prediction1, prediction2=prediction2)
         except ValueError:
             return "Please Enter valid values"
 
@@ -92,10 +92,10 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
     print(test_data)
 
     #predict
-    prediction_ta = model_ta.predict(test_data)
-    prediction_tsv = model_tsv.predict(test_data)
-    
-    return prediction_ta, prediction_tsv
+    prediction1 = model_ta.predict(test_data)
+    prediction2 = model_tsv.predict(test_data)
+
+    return render_template(prediction1, prediction2)
 
 
 
@@ -124,21 +124,3 @@ def upload_file():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True,port=5001) #host='0.0.0.0'คือสามารถให้เครื่องอื่นเห็นได้
-
-
-
-#@app.route("/home", methods=['POST','GET'])
-#def homefn():
-#    if request.method == "GET":
-#       print('we are in home(GET)', file=sys.stdout)
-#       namein = request.args.get('fname')
-#       print(namein, file=sys.stdout)
-#       return render_template("webapp.html", name=namein)
-#
-#    elif request.method == "POST":
-#        print('We are in home(POST)', file=sys.stdout)
-#        namein = request.form.get('fname')
-#        lastnamein = request.form.get('lname')
-#        print(namein, file=sys.stdout)
-#        print(lastnamein, file=sys.stdout)
-#        return render_template("webapp.html",name=namein)
