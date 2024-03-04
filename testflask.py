@@ -16,9 +16,9 @@ app = Flask(__name__)
 #with open(f'../AIPrototype2023/model/model.pkl', 'rb') as f:
 #    model = load(f)
 with (open(f'../AIPrototype2023/model/tamodel.pk', 'rb')) as f:
-    model_ta = load(f)
+    tamodel = load(f)
 with (open(f'../AIPrototype2023/model/tsvmodel.pk', 'rb')) as f:
-    model_tsv = load(f)
+    tsvmodel = load(f)
 
 
 #load the model
@@ -42,6 +42,9 @@ def helloworld():
 @app.route("/home", methods=['POST','GET'])
 def homefn():
        return render_template("webapp1.html")
+
+
+all_predictions = []
 
 
 @app.route("/form", methods=['POST','GET'])
@@ -75,13 +78,15 @@ def form_info():
 
 
         try:
-            prediction1, prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction1 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            all_predictions.append(prediction1)
+            all_predictions.append(prediction2)            
             # Pass predictions to template
             return render_template('webapp2.html', prediction1=prediction1, prediction2=prediction2)
+        
         except ValueError:
             return "Please Enter valid values"
-
-    return render_template('webapp2.html')
 
 
 def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
@@ -93,10 +98,13 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
     print(test_data)
 
     #predict
-    prediction1 = model_ta.predict(test_data)
-    prediction2 = model_tsv.predict(test_data)
+    prediction1 = tamodel.predict(test_data)
+    prediction2 = tsvmodel.predict(test_data)
 
     return prediction1, prediction2
+
+for prediction in all_predictions:
+    print(prediction)
 
 
 @app.route('/predict', methods = ['POST', 'GET'])
