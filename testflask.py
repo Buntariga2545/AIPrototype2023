@@ -79,8 +79,8 @@ def form_info():
 
 
         try:
-            prediction_ta = preprocessDataAndPredict_TA(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
-            prediction_tsv = preprocessDataAndPredict_TSV(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction_ta = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction_tsv = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
             # Pass predictions to template
             return render_template('webapp2.html', prediction1=prediction_ta, prediction2=prediction_tsv)
         except ValueError:
@@ -111,9 +111,28 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
 
     #predict
     prediction_ta = model_ta.predict(test_data)
-    prediction_tsv = model_tsv.predict(test_data)
-    return prediction_ta, prediction_tsv
+    return prediction_ta
 
+
+def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
+    #put all inputs in array
+#   test_data = pd.read_csv('data TSV.csv')
+    test_data = [[Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
+    print(test_data)
+
+    test_data = np.array(test_data)
+    test_data = pd.DataFrame(test_data)
+    print(test_data)
+
+    #open file
+#    file = open("model.pkl","rb")
+
+    #load trained model
+#    trained_model = joblib.load(file)
+
+    #predict
+    prediction_tsv = model_tsv.predict(test_data)
+    return prediction_tsv
 #    prediction = model_ta.predict(test_data)
 #    prediction = model_tsv.predict(test_data)
 #    return prediction
