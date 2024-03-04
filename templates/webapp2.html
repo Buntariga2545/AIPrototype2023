@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,7 +11,7 @@
 
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
- <!--<title>Web App</title>-->
+  <title>Web App</title>
   <title>Thermal Comfort</title>
 
 </head>
@@ -30,4 +30,19 @@
   </div>
   </form>
 </body>
+</html>-->
+
+
+<!doctype html>
+<html>
+   <body>
+       <h1> {{ prediction2 }} </h1>
+   </body>
 </html>
+      
+    <h3>Predicted TSV: <span style="color:red;">{{ prediction2[0].round(3) }}</span></h3>
+
+  <br>
+  <h1>Predicted TSV:</h1>
+  <p style="font-size:50px">{{ prediction2 }}</p>
+</div>
