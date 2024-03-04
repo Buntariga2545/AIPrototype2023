@@ -13,7 +13,6 @@ import sys
 
 app = Flask(__name__)
 
-
 #with open(f'../AIPrototype2023/model/model.pkl', 'rb') as f:
 #    model = load(f)
 with open(f'../AIPrototype2023/model/model_tsv.pk', 'rb') as f:
@@ -21,9 +20,6 @@ with open(f'../AIPrototype2023/model/model_tsv.pk', 'rb') as f:
 with open(f'../AIPrototype2023/model/tamodel.pk', 'rb') as f:
     model_ta = load(f)
 
-
-Gender = {0: 'ชาย', 1: 'หญิง'}
-Area = {1: 'ภายนอก/มีหลังคาคลุม', 2: 'ภายนอก/กลางแจ้ง', 3: 'ภายนอก/ใต้ร่มไม้', 4: 'ภายใต้อาคาร'}
 #load the model
 #model = pickle.load(open('savemodel.sav', 'rb'))
 
@@ -88,14 +84,8 @@ def form_info():
             # Pass predictions to template
             return render_template('webapp2.html', prediction_ta=prediction_ta, prediction_tsv=prediction_tsv)
         
-
         except ValueError:
             return "Please Enter valid values"
-
-
-
-
-
 
 #       print('เจอละ(POST)', file=sys.stdout)
 #       Agein = request.form.get('ticketNum')
