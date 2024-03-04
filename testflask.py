@@ -81,7 +81,7 @@ def form_info():
         Seasonsin = request.form.get('Seasons')
         print('Seasons = ', Seasonsin, file=sys.stdout)
 
-   
+
         try:
             prediction_ta, prediction_tsv = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
             # Pass predictions to template
