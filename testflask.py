@@ -92,7 +92,6 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, 
 
     #predict
     prediction1 = tamodel.predict(test_data1)
-    prediction2 = tsvmodel.predict(test_data1)
 
     return prediction1
 
