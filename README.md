@@ -15,8 +15,13 @@ __________________________
 
 ## [WEB PAGE💻](https://buntariga2545.github.io/test_webpage/)
 - ### html
-- [testflask.py](https://github.com/Buntariga2545/AIPrototype2023/blob/main/testflask.py)
 - [webapp.html](https://github.com/Buntariga2545/AIPrototype2023/blob/main/templates/webapp.html)
+- [webapp1.html](https://github.com/Buntariga2545/AIPrototype2023/blob/main/templates/webapp1.html)
+- [webapp2.html](https://github.com/Buntariga2545/AIPrototype2023/blob/main/templates/webapp2.html)
 - ### css
+- [main.css](https://github.com/Buntariga2545/AIPrototype2023/blob/main/static/css/main.css)
+- [style.css](https://github.com/Buntariga2545/AIPrototype2023/blob/main/static/css/main.css)
+- [style2.css](https://github.com/Buntariga2545/AIPrototype2023/blob/main/static/css/main.css)
 - ### py
+- [testflask.py](https://github.com/Buntariga2545/AIPrototype2023/blob/main/testflask.py)
 ## [GitHub Project📂📚](https://github.com/Buntariga2545/Project)
