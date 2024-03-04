@@ -11,7 +11,7 @@
 
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-<title>Web App</title>
+ <!--<title>Web App</title>-->
   <title>Thermal Comfort</title>
 
 </head>
@@ -20,12 +20,18 @@
   <div class="container">
     <header><h2><center>Result</center></h2></header>
     <br>
-    <h3>Predicted TSV: <span style="color:red;">{{ prediction[0].round(0) }}</span></h3>
+
+    <!--<h3>Predicted TSV: <span style="color:red;">{{ prediction[0].round(0) }}</span></h3>-->
+
+    <h3>Predicted TA: <span style="color:red;">{{ prediction1[0].round(3) }}</span></h3>
+    <br>
+    <h3>Predicted TSV: <span style="color:blue;">{{ prediction2[0].round(3) }}</span></h3>
     <br>
 
   </div>
 </body>
 </html>
+
 
 <!--<!doctype html>
 <html>
