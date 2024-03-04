@@ -1,9 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Prompt', sans-serif;
 }
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -11,6 +12,7 @@ nav {
     padding: 10px;
     /*background-color: #9290C3*/
 }
+
 .logo a {
     width: 20%;
     justify-content: center;
@@ -21,6 +23,7 @@ nav {
     font-size: 25px;
     line-height: 80px;
     padding: 0 25px;
+    
 }
 .menu {
     display: flex;
@@ -36,6 +39,7 @@ nav {
     align-items: center;
     text-decoration: none;
     color: #333;
+
 }
 banner {
     width: 80%;
@@ -44,11 +48,13 @@ banner {
     top: 25%;
     left: 150px;
     color: #333;
+ 
 }
 .app-text {
     width: 50%;
     float: left;
     padding-left: 50px;
+    
 }
 .app-text h3 {
     margin-top: 100px;
@@ -57,6 +63,7 @@ banner {
     font-weight: 400;
     letter-spacing: 2px;
     text-transform: uppercase;
+    font-family: 'Prompt', sans-serif;
 }
 .app-text h1 {
     font-size: 51px;
@@ -72,12 +79,15 @@ banner {
     letter-spacing: 1px;
     padding-right: 250px;
     color: #000 ;
+    font-family: 'Prompt', sans-serif;
 }
+
 .btn-group {
     display: flex;
-    width: 100%;
+    width: 90%;
     position: relative;
-} 
+}
+    
 .pred-btn {
     cursor: pointer;
     display: block;
@@ -89,11 +99,14 @@ banner {
     background-color: #ffa037;
     padding: 15px 50px;
     float: left;
+  
 }
+
 .app-pic img{
     width: 700px; 
     position: absolute;
-    top: 50px;
-    right: 40px;
-    padding: 5opx;
+    top: 50px; 
+    right: 40px;    
+    padding: 50px;
+
 }
