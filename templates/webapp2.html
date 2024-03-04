@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,23 +6,44 @@
   <meta http-equiv="x-ua-compatible" content="TE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="style.css">-->
-  <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
 
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-  <title>Web App</title>
-  <title>Thermal Comfort</title>-->
+  <!--<title>Web App</title> -->
+  <title>Thermal Comfort</title>
 
-<!--</head>
+</head>
 
 <body>
   <div class="container">
     <header><h2><center>Result</center></h2></header>
-    
-    <form action="{{url_for('predict')}}" method="POST" enctype="multipart/form-data">
-      <div style="padding: 10px; padding-left: 325px;">
-        <label for -->
+    <br>
+    <h3>Predicted TSV: <span style="color:red;">{{ prediction[0].round(0) }}</span></h3>
+    <br>
+
+
+  </div>
+</body>
+</html>
+
+<!--<!doctype html>
+<html>
+   <body>
+       <h1> {{ prediction }} </h1>
+   </body>
+</html>
+      
+      <h3>Predicted TSV: <span style="color:red;">{{ prediction[0].round(0) }}</span></h23>
+
+  <br>
+  <h1>Predicted TSV:</h1>
+  <p style="font-size:50px">{{ prediction }}</p>
+</div>-->
+
+
+
 
 <!--<!doctype html>
 <html lang="en">
@@ -60,18 +81,3 @@
     </div>
   </body>
 </html> -->
-
-
-<!doctype html>
-<html>
-   <body>
-       <h1> {{ prediction }} </h1>
-   </body>
-</html>
-      
-      <h1>Output is: <span style="color:red;">{{ prediction[0].round(0) }}</span></h1>
-
-  <br>
-  <h1>Predicted TSV:</h1>
-  <p style="font-size:50px">{{ prediction }}</p>
-</div>
