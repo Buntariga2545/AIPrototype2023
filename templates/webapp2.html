@@ -21,10 +21,17 @@
   <div class="container">
     <header><h2><center>Result</center></h2></header>
 
+    <br>
     <h3>Predicted TA: <span style="color:red;">{{ prediction1[0] }}</span></h3>
     <br>
     <h3>Predicted TSV: <span style="color:blue;">{{ prediction2[0].round(3) }}</span></h3>
     <br>
+
+    {% if prediction==Accept %}     
+    <img src="./static/GoodDay.png" alt="">
+    {% elif prediction==Unaccept %}
+    <img src="./static/BadDay.png" alt="">
+    {% endif %}
 
   </div>
   </form>
