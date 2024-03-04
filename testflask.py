@@ -144,52 +144,7 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
 
 @app.route('/predict', methods = ['POST', 'GET'])
 def predict():
-    return render_template('webapp2.html')
-
-
-#        return flask.render_template('webapp2.html', original_input={'Gender': Genderin, 'Age': Agein, 'Weight': weightin, 
-#                                                                     'Height': heightin, 'BMI': BMIin, 'Temp': Tempin, 
-#                                                                     'RH': RHin, 'V': Vin, 'TMRT': TMRTin, 
-#                                                                     'area': areain},
-#                                     result=predictions)
-    
-#        return render_template("webapp2.html", prediction=predictions)
-
-
-#        try:
-#            prediction = preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT)
-            # Pass prediction to template
-#            return render_template('webapp2.html', prediction=prediction)
-#        except ValueError:
-#            return "Please Enter valid values"
- #   else:
-        # Handle GET request
- #       return render_template('webapp2.html')
-
-#def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
-    # Put all inputs in array
-#    test_data = np.array([[Age, Weight, Height, BMI, Temp, RH, V, MRT]])
-    
-    # Open file
-#    file = open("model.pk","rb")
-    # Load trained model
-#    trained_model = joblib.load(file)
-    # Predict
-#    prediction = trained_model.predict(test_data)
-    
-#    return prediction
-    
-#def preprocessDataAndPredict(Age, Weight, Height, BMI, Temp, RH, V, MRT):
-    #put all inputs in array
-#    test_data = pd.read_csv('test_data.csv')
-#    print(test_data)
-    #open file
-#    file = open("model.pk","rb")
-    #load trained model
-#    trained_model = joblib.load(file)
-    #predict
-#    prediction = trained_model.predict(test_data)
-#    return render_template('webapp2.html', prediction = prediction)
+    return render_template('webapp2.html', prediction_ta=prediction_ta, prediction_tsv=prediction_tsv)
 
 
 @app.route('/upload', methods=['GET', 'POST'])
