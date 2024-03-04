@@ -90,33 +90,12 @@ def form_info():
 def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
     #put all inputs in array
 #   test_data = pd.read_csv('data TSV.csv')
-    test_data1 = [[Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
-    print(test_data1)
+    test_data = [[Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
+    print(test_data)
 
-    test_data1 = np.array(test_data1)
-    test_data1 = pd.DataFrame(test_data1)
-    print(test_data1)
-
-    #open file
-#    file = open("model.pkl","rb")
-
-    #load trained model
-#    trained_model = joblib.load(file)
-
-    #predict
-    prediction_ta = model_ta.predict(test_data1)
-    return prediction_ta
-
-
-def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
-    #put all inputs in array
-#   test_data = pd.read_csv('data TSV.csv')
-    test_data2 = [[Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
-    print(test_data2)
-
-    test_data2 = np.array(test_data2)
-    test_data2 = pd.DataFrame(test_data2)
-    print(test_data2)
+    test_data = np.array(test_data)
+    test_data = pd.DataFrame(test_data)
+    print(test_data)
 
     #open file
 #    file = open("model.pkl","rb")
@@ -125,8 +104,10 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
 #    trained_model = joblib.load(file)
 
     #predict
-    prediction_tsv = model_tsv.predict(test_data2)
-    return prediction_tsv
+    prediction_ta = model_ta.predict(test_data)
+    prediction_tsv = model_tsv.predict(test_data)
+    return prediction_ta, prediction_tsv
+
 
 #    prediction = model_ta.predict(test_data)
 #    prediction = model_tsv.predict(test_data)
