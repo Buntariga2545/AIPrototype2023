@@ -79,11 +79,10 @@ def form_info():
 
 
         try:
-            prediction_ta = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
-            prediction_tsv = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction_ta = preprocessDataAndPredict_TA(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
+            prediction_tsv = preprocessDataAndPredict_TSV(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
             # Pass predictions to template
             return render_template('webapp2.html', prediction1=prediction_ta, prediction2=prediction_tsv)
-        
         except ValueError:
             return "Please Enter valid values"
 
