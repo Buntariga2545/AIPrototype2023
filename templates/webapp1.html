@@ -39,3 +39,49 @@
         </div>
     </body>
 </html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Thermal Comfort</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <!--<link rel="stylesheet" href="{{ url_for('static', filename='css/pred.css') }}">-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
+
+    </head>
+    <body>
+        <!-- nav section -->
+         <nav>
+            <div class="logo">
+                <a href="#">Thermal Comfort </a>
+            </div>
+            <ul class="menu">
+                <li> <a href="#">Home</a></li>
+                <li> <a href="#">About </a></li>
+                <li> <a href="#">Contact </a></li>
+            </ul>
+        </nav>
+        <!-- nav section -->
+        <div class="banner">
+            <div class="app-text">
+                <h3>Are You Feel</h3>
+                <h1>Comfortable?</h3></h1>
+                <p>This website is part of A project that Study  Thermal Comfort in in Krung Thep Aphiwat Central Terminal Station Using Data Mining.            </p>
+               
+            </div>
+        </div>
+        <div class="btn-group">
+            <a href="{{ url_for('form_info') }}" class="pred-btn">PREDICT NOW</a>    
+        </div>
+        <div class="app-pic">
+            <img src="./static/machine learning illustration.png" alt="">
+        </div>
+    </body>
+</html>
