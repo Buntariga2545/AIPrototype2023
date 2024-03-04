@@ -15,10 +15,11 @@ app = Flask(__name__)
 
 #with open(f'../AIPrototype2023/model/model.pkl', 'rb') as f:
 #    model = load(f)
-with open(f'../AIPrototype2023/model/model_tsv.pk', 'rb') as f:
-    model_tsv = load(f)
-with open(f'../AIPrototype2023/model/tamodel.pk', 'rb') as f:
+with (open(f'../AIPrototype2023/model/tamodel.pk', 'rb')) as f:
     model_ta = load(f)
+with (open(f'../AIPrototype2023/model/model_tsv.pk', 'rb')) as f:
+    model_tsv = load(f)
+
 
 #load the model
 #model = pickle.load(open('savemodel.sav', 'rb'))
