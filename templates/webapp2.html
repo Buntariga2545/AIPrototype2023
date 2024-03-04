@@ -17,17 +17,17 @@
 </head>
 
 <body>
+  <form action="{{url_for('predict')}}" method="POST" enctype="multipart/form-data">
   <div class="container">
     <header><h2><center>Result</center></h2></header>
 
-
     <br>
-
-    <h3>Predicted TA: <span style="color:red;">{{ prediction_ta[0].round(3) }}</span></h3>
+    <h3>Predicted TA: <span style="color:red;">{{ prediction_ta[0] }}</span></h3>
     <br>
-    <h3>Predicted TSV: <span style="color:blue;">{{ prediction_tsv[0].round(3) }}</span></h3>
-
+    <h3>Predicted TSV: <span style="color:blue;">{{ prediction_tsv[0] }}</span></h3>
+    <br>
 
   </div>
+  </form>
 </body>
 </html>

@@ -97,10 +97,6 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
     return prediction_ta, prediction_tsv
 
 
-#    prediction = model_ta.predict(test_data)
-#    prediction = model_tsv.predict(test_data)
-#    return prediction
-
 
 @app.route('/predict', methods = ['POST', 'GET'])
 def predict():
