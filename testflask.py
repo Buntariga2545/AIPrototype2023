@@ -44,9 +44,6 @@ def homefn():
        return render_template("webapp1.html")
 
 
-all_predictions = []
-
-
 @app.route("/form", methods=['POST','GET'])
 def form_info():
     if request.method == "GET":
@@ -77,9 +74,7 @@ def form_info():
 
         try:
             prediction1 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
-            prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
-            all_predictions.append(prediction1)
-            all_predictions.append(prediction2)            
+            prediction2 = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)           
             # Pass predictions to template
             return render_template('webapp2.html', prediction1=prediction1, prediction2=prediction2)
         
