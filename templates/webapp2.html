@@ -22,19 +22,10 @@
     <header><h2><center>Result</center></h2></header>
 
     <br>
-    {% if prediction1 == [0] %}
-    <h3>Predicted TSV 1: [0]</h3>
-    {% else %}
-    <h3>Predicted TSV 1: {{ prediction1 }}</h3>
-    {% endif %}
+    <h3>Predicted TA: <span style="color:red;">{{ prediction_ta[0].round(3) }}</span></h3>
     <br>
-    {% if prediction2 == [0] %}
-    <h3>Predicted TSV 2: [0]</h3>
-    {% elif prediction2 == array([0], [0]) %}
-    <h3>Predicted TSV 2: array([0], [0])</h3>
-    {% else %}
-    <h3>Predicted TSV 2: {{ prediction2 }}</h3>
-    {% endif %}
+    <h3>Predicted TSV: <span style="color:blue;">{{ prediction_tsv[0].round(3) }}</span></h3>
+    <br>
 
   </div>
   </form>
