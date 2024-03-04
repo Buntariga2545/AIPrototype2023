@@ -10,11 +10,17 @@ import pickle
 import json
 import sys
 
-with open(f'../AIPrototype2023/model/model.pkl', 'rb') as f:
-    model = load(f)
-
 
 app = Flask(__name__)
+
+
+#with open(f'../AIPrototype2023/model/model.pkl', 'rb') as f:
+#    model = load(f)
+with open(f'../AIPrototype2023/model/model_tsv.pk', 'rb') as f:
+    model_tsv = load(f)
+with open(f'../AIPrototype2023/model/tamodel.pk', 'rb') as f:
+    model_ta = load(f)
+
 
 Gender = {0: 'ชาย', 1: 'หญิง'}
 Area = {1: 'ภายนอก/มีหลังคาคลุม', 2: 'ภายนอก/กลางแจ้ง', 3: 'ภายนอก/ใต้ร่มไม้', 4: 'ภายใต้อาคาร'}
@@ -53,7 +59,7 @@ def form_info():
     
     elif request.method == "POST":
         Genderin = request.form.get('Gender')
-        print(Genderin, file=sys.stdout)
+        print('Gender = ', Genderin, file=sys.stdout)
         Agein = request.form.get('Age')
         print('Age = ', Agein, file=sys.stdout)      
         Weightin = request.form.get('Weight') 
@@ -71,11 +77,13 @@ def form_info():
         TMRTin = request.form.get('TMRT')
         print('TMRT = ', TMRTin, file=sys.stdout)
         Areain = request.form.get('Area')
-        print(Areain, file=sys.stdout)
+        print('Area = ', Areain, file=sys.stdout)
+        Seasonsin = request.form.get('Seasons')
+        print('Seasons = ', Seasonsin, file=sys.stdout)
 
    
         try:
-            prediction = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain)
+            prediction = preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin)
             # Pass prediction to template
             return render_template('webapp2.html', prediction=prediction)
 
@@ -91,10 +99,10 @@ def form_info():
 #       print(weightin, file=sys.stdout)
 #       return render_template("webapp.html", Age=Agein)
 
-def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain):
+def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
     #put all inputs in array
 #   test_data = pd.read_csv('data TSV.csv')
-    test_data = [[Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain]]
+    test_data = [[Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
     print(test_data)
 
     test_data = np.array(test_data)
@@ -108,7 +116,8 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
 #    trained_model = joblib.load(file)
 
     #predict
-    prediction = model.predict(test_data)
+    prediction = model_ta.predict(test_data)
+    prediction = model_tsv.predict(test_data)
     return prediction
     
 
