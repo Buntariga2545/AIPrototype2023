@@ -1,14 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<!doctype html>
-<html>
-   <body>
-       <h1> {{ prediction2 }} </h1>
-   </body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="x-ua-compatible" content="TE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+  <!--<title>Web App</title>-->
+  <title>Thermal Comfort</title>
+
+</head>
+
+<body>
+  <form action="/form" method="POST">
+  <div class="container">
+    <header><h2><center>Result</center></h2></header>
+
+    <br>
+    {% if prediction1 == [0] %}
+    <h3>Predicted TSV 1: [0]</h3>
+    {% else %}
+    <h3>Predicted TSV 1: {{ prediction1 }}</h3>
+    {% endif %}
+    <br>
+    {% if prediction2 == [0] %}
+    <h3>Predicted TSV 2: [0]</h3>
+    {% elif prediction2 == array([0], [0]) %}
+    <h3>Predicted TSV 2: array([0], [0])</h3>
+    {% else %}
+    <h3>Predicted TSV 2: {{ prediction2 }}</h3>
+    {% endif %}
+
+  </div>
+  </form>
+</body>
 </html>
-      
-    <h3>Predicted TSV: <span style="color:red;">{{ prediction2[0].round(3) }}</span></h3>
-
-  <br>
-  <h1>Predicted TSV:</h1>
-  <p style="font-size:50px">{{ prediction2 }}</p>
-</div>
