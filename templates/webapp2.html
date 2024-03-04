@@ -19,11 +19,15 @@
 <body>
   <div class="container">
     <header><h2><center>Result</center></h2></header>
-    
+
     <br>
+    {% if prediction_ta %}
     <h3>Predicted TA: <span style="color:red;">{{ prediction_ta[0].round(3) }}</span></h3>
-    <br>
+    {% endif %}
+
+    {% if prediction_tsv %}
     <h3>Predicted TSV: <span style="color:blue;">{{ prediction_tsv[0].round(3) }}</span></h3>
+    {% endif %}
     <br>
 
   </div>
