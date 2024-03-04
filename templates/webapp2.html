@@ -22,71 +22,16 @@
 
 
     <br>
-    {% if prediction1 %}
-    <h3>Predicted TA: <span style="color:red;">{{ prediction1[0].round(3) }}</span></h3>
+    {% if prediction_ta %}
+    <h3>Predicted TA: <span style="color:red;">{{ prediction_ta[0].round(3) }}</span></h3>
     {% endif %}
 
-    {% if prediction2 %}
-    <h3>Predicted TSV: <span style="color:blue;">{{ prediction2[0].round(3) }}</span></h3>
+    {% if prediction_tsv %}
+    <h3>Predicted TSV: <span style="color:blue;">{{ prediction_tsv[0].round(3) }}</span></h3>
     {% endif %}
     <br>
 
-    
+
   </div>
 </body>
 </html>
-
-
-<!--<!doctype html>
-<html>
-   <body>
-       <h1> {{ prediction }} </h1>
-   </body>
-</html>
-      
-      <h3>Predicted TSV: <span style="color:red;">{{ prediction[0].round(0) }}</span></h23>
-
-  <br>
-  <h1>Predicted TSV:</h1>
-  <p style="font-size:50px">{{ prediction }}</p>
-</div>-->
-
-
-
-
-<!--<!doctype html>
-<html lang="en">
-  <head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="x-ua-compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
-
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-
-    <title>Thermal Comfort</title>
-
-  </head>
-
-  <body>
-    <form action="{{url_for('predict')}}" method="POST" enctype="multipart/form-data"></form>
-    <div class="container">
-      <header><h2><center>Result</center></h2></header>
-
-      <div class="result" align="center">
-        <div class="btn-group">
-          {% if result %}
-            {% for variable, value in original_u.items() %}
-              <b>{{ variable }}</b>: {{ value }}<br>
-            {% endfor %}
-            <br>
-            <h1>Output is <span style="color:red;">{{ result }}</span></h1>
-          {% endif %}
-          <h1>Output is <span style="color:red;">{{ prediction[0].round(3) }}</span></h1> 
-        </div>
-      </div>
-    </div>
-  </body>
-</html> -->
