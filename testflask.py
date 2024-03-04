@@ -17,7 +17,7 @@ app = Flask(__name__)
 #    model = load(f)
 with (open(f'../AIPrototype2023/model/tamodel.pkl', 'rb')) as f:
     tamodel = load(f)
-with (open(f'../AIPrototype2023/model/model.pkl', 'rb')) as f:
+with (open(f'../AIPrototype2023/model/tsvmodel.pkl', 'rb')) as f:
     tsvmodel = load(f)
 
 
@@ -83,18 +83,32 @@ def form_info():
 
 
 def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
-    test_data = [[Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
-    print(test_data)
+    test_data1 = [[Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
+    print(test_data1)
 
-    test_data = np.array(test_data)
-    test_data = pd.DataFrame(test_data)
-    print(test_data)
+    test_data1 = np.array(test_data1)
+    test_data1 = pd.DataFrame(test_data1)
+    print(test_data1)
 
     #predict
-    prediction1 = tamodel.predict(test_data)
-    prediction2 = tsvmodel.predict(test_data)
+    prediction1 = tamodel.predict(test_data1)
+    prediction2 = tsvmodel.predict(test_data1)
 
-    return prediction1, prediction2
+    return prediction1
+
+
+def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
+    test_data2 = [[Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
+    print(test_data2)
+
+    test_data2 = np.array(test_data2)
+    test_data2 = pd.DataFrame(test_data2)
+    print(test_data2)
+
+    #predict
+    prediction2 = tsvmodel.predict(test_data2)
+
+    return prediction2
 
 #for prediction in all_predictions:
 #    print(prediction)
