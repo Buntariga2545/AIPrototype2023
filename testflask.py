@@ -48,11 +48,6 @@ def form_info():
     if request.method == "GET":
         return render_template("webapp.html")
     
-#        Gender = request.form.get('gender')
-#        Area = request.form.get('area')
-#        print(Gender,file=sys.stdout)
-#        print(Area,file=sys.stdout)
-    
     elif request.method == "POST":
         Genderin = request.form.get('Gender')
         print('Gender = ', Genderin, file=sys.stdout)
@@ -88,20 +83,12 @@ def form_info():
 
 
 def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
-    #put all inputs in array
-#   test_data = pd.read_csv('data TSV.csv')
     test_data = [[Genderin, Agein, Weightin, Heightin, BMIin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
     print(test_data)
 
     test_data = np.array(test_data)
     test_data = pd.DataFrame(test_data)
     print(test_data)
-
-    #open file
-#    file = open("model.pkl","rb")
-
-    #load trained model
-#    trained_model = joblib.load(file)
 
     #predict
     prediction_ta = model_ta.predict(test_data)
@@ -112,10 +99,6 @@ def preprocessDataAndPredict(Genderin, Agein, Weightin, Heightin, BMIin, Tempin,
 #    prediction = model_ta.predict(test_data)
 #    prediction = model_tsv.predict(test_data)
 #    return prediction
-    
-
-#    result = model.predict([[gender, age, weight, height, bmi, temp,rh,v,tmrt,area]])[0]
-#    return render_template('webapp2.html') #,gender=gender, age=age, weight=weight, heigh
 
 
 @app.route('/predict', methods = ['POST', 'GET'])
