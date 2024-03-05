@@ -97,7 +97,7 @@ def preprocessDataAndPredict_TA(Genderin, Agein, Weightin, Heightin, Tempin, RHi
     #predict
     prediction1 = tamodel.predict(test_data_scaled1)
 #    return prediction1
-    return render_template('webapp2.html', prediction1=prediction1)
+    return prediction1
 
 def preprocessDataAndPredict_TSV(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
     test_data2 = [[Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
@@ -113,7 +113,7 @@ def preprocessDataAndPredict_TSV(Genderin, Agein, Weightin, Heightin, Tempin, RH
     #predict
     prediction2 = tsvmodel.predict(test_data_scaled2)
 #    return prediction2
-    return render_template('webapp2.html', prediction2=prediction2)
+    return prediction2
                        
 #for prediction in all_predictions:
 #    print(prediction)
