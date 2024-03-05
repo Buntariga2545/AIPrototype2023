@@ -27,10 +27,16 @@
     <h3>Predicted TSV: <span style="color:blue;">{{ prediction2[0].round(2) }}</span></h3>
     <br>
 
-    {% if prediction==Accept %}     
+    {% if prediction1==Accept %}     
     <img src="./static/GoodDay.jpeg" alt="">
-    {% elif prediction==Unaccept %}
+    {% elif prediction1==Unaccept %}
     <img src="./static/BadDay.jpeg" alt="">
+    {% endif %}
+
+    {% if prediction2==2 %}     
+    <font style="font-size: 16px;"><strong>รู้สึกค่อนข้างร้อน</strong></font>
+    {% elif prediction1==3 %}
+    <font style="font-size: 16px;"><strong>รู้สึกร้อนมาก</strong></font>
     {% endif %}
 
   </div>
