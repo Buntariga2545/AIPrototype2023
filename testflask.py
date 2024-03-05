@@ -112,9 +112,6 @@ def preprocessDataAndPredict_TSV(Genderin, Agein, Weightin, Heightin, Tempin, RH
     #predict
     prediction2 = tsvmodel.predict(test_data_scaled2)
     return prediction2
-                       
-#for prediction in all_predictions:
-#    print(prediction)
 
 
 @app.route('/predict', methods = ['POST', 'GET'])
