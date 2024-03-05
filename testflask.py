@@ -84,7 +84,7 @@ def form_info():
 
 def preprocessDataAndPredict_TA(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
     test_data1 = [[Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
-    print(test_data1)
+
 
     test_data1 = np.array(test_data1)
     test_data1 = pd.DataFrame(test_data1)
@@ -98,7 +98,7 @@ def preprocessDataAndPredict_TA(Genderin, Agein, Weightin, Heightin, Tempin, RHi
 
 def preprocessDataAndPredict_TSV(Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin):
     test_data2 = [[Genderin, Agein, Weightin, Heightin, Tempin, RHin, Vin, TMRTin, Areain, Seasonsin]]
-    print(test_data2)
+
 
     test_data2 = np.array(test_data2)
     test_data2 = pd.DataFrame(test_data2)
