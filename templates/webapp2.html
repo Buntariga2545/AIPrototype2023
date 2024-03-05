@@ -27,9 +27,9 @@
     <h3>Predicted TSV: <span style="color:blue;">{{ prediction2[0].round(2) }}</span></h3>
     <br>
 
-    {% if prediction1==Accept %}     
+    {% if prediction1==0 %}     
     <img src="./static/GoodDay.jpeg" alt="">
-    {% elif prediction1==Unaccept %}
+    {% elif prediction1==1 %}
     <img src="./static/BadDay.jpeg" alt="">
     {% endif %}
 
