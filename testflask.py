@@ -2,6 +2,7 @@ from crypt import methods
 from doctest import debug
 from flask import Flask, flash, request, redirect, render_template, make_response
 from joblib import dump, load
+from sklearn.preprocessing import StandardScaler
 
 import numpy as np
 import pandas as pd
@@ -89,9 +90,12 @@ def preprocessDataAndPredict_TA(Genderin, Agein, Weightin, Heightin, Tempin, RHi
     test_data1 = np.array(test_data1)
     test_data1 = pd.DataFrame(test_data1)
     print(test_data1)
+    #scaling data
+    scaler = StandardScaler()
+    test_data_scaled1 = scaler.fit_transform(test_data1)
 
     #predict
-    prediction1 = tamodel.predict(test_data1)
+    prediction1 = tamodel.predict(test_data_scaled1)
 
     return prediction1
 
@@ -103,9 +107,12 @@ def preprocessDataAndPredict_TSV(Genderin, Agein, Weightin, Heightin, Tempin, RH
     test_data2 = np.array(test_data2)
     test_data2 = pd.DataFrame(test_data2)
     print(test_data2)
+    #scaling data
+    scaler = StandardScaler()
+    test_data_scaled2 = scaler.fit_transform(test_data2)
 
     #predict
-    prediction2 = tsvmodel.predict(test_data2)
+    prediction2 = tsvmodel.predict(test_data_scaled2)
 
     return prediction2
 
