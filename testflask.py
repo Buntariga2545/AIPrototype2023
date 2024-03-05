@@ -88,7 +88,7 @@ def preprocessDataAndPredict_TA(Genderin, Agein, Weightin, Heightin, Tempin, RHi
 
 
     test_data1 = np.array(test_data1)
-    test_data1 = pd.DataFrame(test_data1)
+#    test_data1 = pd.DataFrame(test_data1)
     print(test_data1)
     #scaling data
     scaler = StandardScaler()
@@ -103,7 +103,7 @@ def preprocessDataAndPredict_TSV(Genderin, Agein, Weightin, Heightin, Tempin, RH
 
 
     test_data2 = np.array(test_data2)
-    test_data2 = pd.DataFrame(test_data2)
+#    test_data2 = pd.DataFrame(test_data2)
     print(test_data2)
     #scaling data
     scaler = StandardScaler()
